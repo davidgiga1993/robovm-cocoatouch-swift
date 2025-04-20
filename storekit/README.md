@@ -44,7 +44,7 @@ scope.launch(Dispatchers.Main) {
 
 ## Sample app
 The port of [Apple's Implementing a store in your app using the StoreKit API](https://developer.apple.com/documentation/storekit/implementing-a-store-in-your-app-using-the-storekit-api) available as part of [alt-pods-tests](https://github.com/dkimitsa/alt-pods-tests) repository:  
-https://github.com/dkimitsa/alt-pods-tests/cocoatouch-swift-storekit
+https://github.com/dkimitsa/alt-pods-tests/tree/master/cocoatouch-swift-storekit
 
 ## Kotlin notes
 Kotlin extensions were added to Java classes that turns most of the functions with callbacks into suspendable. This allows to use API as designed by Apple as StoreKit2 is written with idea of structured concurrency.
