@@ -15,35 +15,35 @@
  */
 package org.robovm.pods.cocoatouch.storekitrvm;
 
+
 import org.robovm.apple.foundation.NSObject;
 import org.robovm.objc.ObjCRuntime;
-import org.robovm.objc.annotation.Block;
 import org.robovm.objc.annotation.Method;
 import org.robovm.objc.annotation.NativeClass;
 import org.robovm.objc.annotation.Property;
-import org.robovm.objc.block.VoidBlock1;
 import org.robovm.rt.bro.annotation.Library;
-import org.robovm.rt.bro.ptr.Ptr;
 
 /**
- * @since Available in iOS 15.0 and later.
+ * @since Available in iOS 16.4 and later.
  */
-@Library(Library.INTERNAL) @NativeClass("StoreKitRvm.RvmStorefront")
-public class Storefront extends NSObject {
-    public static class StorefrontPtr extends Ptr<Storefront, StorefrontPtr> {}
-    static { ObjCRuntime.bind(Storefront.class); }
+@Library(Library.INTERNAL) @NativeClass("StoreKitRvm.RvmPurchaseIntent")
+public class PurchaseIntent extends NSObject {
+    static { ObjCRuntime.bind(PurchaseIntent.class); }
+
+    protected PurchaseIntent() {}
+    protected PurchaseIntent(Handle h, long handle) { super(h, handle); }
+    protected PurchaseIntent(SkipInit skipInit) { super(skipInit); }
     
-    protected Storefront() {}
-    protected Storefront(Handle h, long handle) { super(h, handle); }
-    protected Storefront(SkipInit skipInit) { super(skipInit); }
-    
-    @Property(selector = "countryCode")
-    public native String getCountryCode();
+    @Property(selector = "product")
+    public native Product getProduct();
+    /**
+     * @since Available in iOS 18.0 and later.
+     */
+    @Property(selector = "offer")
+    public native Product.SubscriptionOffer getOffer();
     @Property(selector = "id")
     public native String getId();
     
-    @Method(selector = "currentWithCompletionHandler:")
-    public static native Task getCurrent(@Block VoidBlock1<Storefront> completionHandler);
-    @Method(selector = "updates")
-    public static native AsyncSequence<Storefront> updates();
+    @Method(selector = "intents")
+    public static native AsyncSequence<PurchaseIntent> intents();
 }

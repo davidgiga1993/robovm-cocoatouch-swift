@@ -157,7 +157,18 @@ extension VerificationResult<Product.SubscriptionInfo.RenewalInfo> {
     func toRvm() -> VerificationResultRenewalInfo { return VerificationResultRenewalInfo(raw: self) }
 }
 
+extension Product.SubscriptionInfo.Status.Statuses {
+    func toRvm() -> RvmAsyncSequence<RvmProduct.SubscriptionInfo.Status> { self.toRvm { $0?.toRvm() } }
+}
 
+extension AsyncStream<(groupID: String, statuses: [Product.SubscriptionInfo.Status])> {
+    func toRvm() -> RvmAsyncSequence<RvmProduct.SubscriptionInfo.Status.Pair> {
+        return self.toRvm {
+            guard let (groupID, statuses) = $0 else { return  nil }
+            return RvmProduct.SubscriptionInfo.Status.Pair(groupID: groupID, statuses: statuses.map{ $0.toRvm() })
+        }
+    }
+}
 
 //
 // MARK: Transaction related converters
@@ -249,6 +260,9 @@ extension Storefront {
     func toRvm() -> RvmStorefront { return RvmStorefront(raw: self) }
 }
 
+extension Storefront.Storefronts {
+    func toRvm() -> RvmAsyncSequence<RvmStorefront> { self.toRvm { $0?.toRvm() } }
+}
 
 //
 // MARK: PaymentMethodBinding related converters
@@ -274,8 +288,16 @@ extension PaymentMethodBinding.PaymentMethodBindingError {
 //
 // MARK: PaymentMethodBinding related converters
 //
+extension Message {
+    func toRvm() -> RvmMessage { RvmMessage(raw: self) }
+}
+
 extension Message.Reason {
-    func toRvm() -> RvmMessage.Reason { return RvmMessage.Reason(raw: self) }
+    func toRvm() -> RvmMessage.Reason { RvmMessage.Reason(raw: self) }
+}
+
+extension Message.Messages {
+    func toRvm() -> RvmAsyncSequence<RvmMessage> { self.toRvm { $0?.toRvm() } }
 }
 
 
@@ -334,5 +356,18 @@ extension ExternalPurchase.NoticeResult {
 // MARK: AppStore related converters
 //
 extension AppStore.Environment {
-    func toRvm() -> RvmAppStore.Environment { return RvmAppStore.Environment(raw: self) }
+    func toRvm() -> RvmAppStore.Environment { RvmAppStore.Environment(raw: self) }
 }
+
+
+//
+// MARK: PurchaseIntent
+//
+extension PurchaseIntent {
+    func toRvm() -> RvmPurchaseIntent { RvmPurchaseIntent(raw: self) }
+}
+
+extension PurchaseIntent.PurchaseIntents {
+    func toRvm() -> RvmAsyncSequence<RvmPurchaseIntent> { self.toRvm { $0?.toRvm() } }
+}
+

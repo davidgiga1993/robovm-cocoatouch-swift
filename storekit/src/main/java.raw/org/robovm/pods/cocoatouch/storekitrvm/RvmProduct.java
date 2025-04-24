@@ -63,13 +63,15 @@ import org.robovm.apple.coreanimation.*;
     @Property(selector = "productDescription")
     public native String getProductDescription();
     @Property(selector = "price")
-    public native @ByVal NSDecimal getPrice();
+    public native NSDecimalNumber getPrice();
     @Property(selector = "displayPrice")
     public native String getDisplayPrice();
     @Property(selector = "isFamilyShareable")
     public native boolean isFamilyShareable();
     @Property(selector = "subscription")
     public native RvmProduct_SubscriptionInfo getSubscription();
+    @Property(selector = "priceFormatStyle")
+    public native RvmFormatStyle_Currency getPriceFormatStyle();
     @Property(selector = "debugDescription")
     public native String getDebugDescription();
     /*</properties>*/

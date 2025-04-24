@@ -22,6 +22,8 @@ enums:
 
 classes:
     RvmTask: {}
+    RvmECDSASignature: {}
+    RvmFormatStyle_Currency: {}
     RvmAsyncIterator:
         methods:
             '-initWithNextProducer:':
@@ -215,6 +217,7 @@ classes:
             'hash': { exclude: true }
         methods:
             '-isEqual:': { exclude: true }
+    RvmProduct_SubscriptionInfo_Status_Pair: {}
     RvmProduct_SubscriptionOffer:
         properties:
             'hash': { exclude: true }
@@ -338,6 +341,10 @@ classes:
             'hash': { exclude: true }
         methods:
             '-isEqual:': { exclude: true }
+    RvmPurchaseIntent: #since 16.4
+        methods:
+            '-isEqual:': { exclude: true }
+
 protocols:
 
 functions:

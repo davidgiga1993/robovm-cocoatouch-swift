@@ -90,53 +90,17 @@ extension RvmMessage {
     }
 }
 
-///
-///  FIXME: TODO: AsyncSequence if required
-///
-//@available(iOS 16.0, visionOS 1.0, *)
-//@available(macOS, unavailable)
-//@available(tvOS, unavailable)
-//@available(watchOS, unavailable)
-//extension Message {
-//
-//    /// An asynchronous sequence of pending messages to be displayed.
-//    public struct Messages : AsyncSequence, Sendable {
-//
-//        /// The type of element produced by this asynchronous sequence.
-//        public typealias Element = Message
-//
-//        /// The type of asynchronous iterator that produces elements of this
-//        /// asynchronous sequence.
-//        public struct AsyncIterator : AsyncIteratorProtocol {
-//
-//            /// Asynchronously advances to the next element and returns it, or ends the
-//            /// sequence if there is no next element.
-//            ///
-//            /// - Returns: The next element, if it exists, or `nil` to signal the end of
-//            ///   the sequence.
-//            public mutating func next() async -> Message.Messages.Element?
-//
-//            @available(iOS 16.0, visionOS 1.0, *)
-//            @available(tvOS, unavailable)
-//            @available(watchOS, unavailable)
-//            @available(macOS, unavailable)
-//            public typealias Element = Message.Messages.Element
-//        }
-//
-//        /// Creates the asynchronous iterator that produces elements of this
-//        /// asynchronous sequence.
-//        ///
-//        /// - Returns: An instance of the `AsyncIterator` type used to produce
-//        /// elements of the asynchronous sequence.
-//        public func makeAsyncIterator() -> Message.Messages.AsyncIterator
-//    }
-//
-//    /// Use `messages` to listen for pending messages. You may want to delay
-//    /// showing the message if it would interrupt your user's interaction
-//    /// with your app. By default, the system will display pending
-//    /// messages at app launch.
-//    public static var messages: Message.Messages { get }
-//}
+@available(iOS 16.0, visionOS 1.0, *)
+@available(macOS, unavailable)
+@available(tvOS, unavailable)
+@available(watchOS, unavailable)
+extension RvmMessage {
+    /// Use `messages` to listen for pending messages. You may want to delay
+    /// showing the message if it would interrupt your user's interaction
+    /// with your app. By default, the system will display pending
+    /// messages at app launch.
+    @objc public static var messages: RvmAsyncSequence<RvmMessage> { return Message.messages.toRvm() }
+}
 
 @available(iOS 16.0, visionOS 1.0, *)
 @available(macOS, unavailable)

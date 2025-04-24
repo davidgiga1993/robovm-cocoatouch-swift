@@ -59,6 +59,9 @@ import org.robovm.apple.coreanimation.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    
+    @Method(selector = "updates")
+    public static native RvmAsyncSequence<RvmProduct_SubscriptionInfo_Status> updates();
+    @Method(selector = "all")
+    public static native RvmAsyncSequence<RvmProduct_SubscriptionInfo_Status_Pair> all();
     /*</methods>*/
 }

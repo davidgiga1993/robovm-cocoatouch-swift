@@ -34,34 +34,29 @@ import org.robovm.apple.coreanimation.*;
 /*</imports>*/
 
 /*<javadoc>*/
-/**
- * @since Available in iOS 15.0 and later.
- */
+
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("StoreKitRvm.RvmStorefront")/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/RvmStorefront/*</name>*/ 
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("StoreKitRvm.RvmECDSASignature")/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/RvmECDSASignature/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class RvmStorefrontPtr extends Ptr<RvmStorefront, RvmStorefrontPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(RvmStorefront.class); }/*</bind>*/
+    /*<ptr>*/public static class RvmECDSASignaturePtr extends Ptr<RvmECDSASignature, RvmECDSASignaturePtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(RvmECDSASignature.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    protected RvmStorefront() {}
-    protected RvmStorefront(Handle h, long handle) { super(h, handle); }
-    protected RvmStorefront(SkipInit skipInit) { super(skipInit); }
+    protected RvmECDSASignature() {}
+    protected RvmECDSASignature(Handle h, long handle) { super(h, handle); }
+    protected RvmECDSASignature(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "countryCode")
-    public native String getCountryCode();
-    @Property(selector = "id")
-    public native String getId();
+    @Property(selector = "rawRepresentation")
+    public native NSData getRawRepresentation();
+    @Property(selector = "derRepresentation")
+    public native NSData getDerRepresentation();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "currentWithCompletionHandler:")
-    public static native RvmTask getCurrent(@Block VoidBlock1<RvmStorefront> completionHandler);
-    @Method(selector = "updates")
-    public static native RvmAsyncSequence<RvmStorefront> updates();
+    
     /*</methods>*/
 }

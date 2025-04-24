@@ -132,7 +132,7 @@ public class VerificationResultAppTransaction: NSObject {
     @objc public var signatureData: Data { return raw.signatureData }
 
     /// The signature of the JWS, converted to a `CryptoKit` value.
-    /// FIXME: @objc public var signature: P256.Signing.ECDSASignature { return raw.signature } }
+    @objc public var signature: RvmECDSASignature { raw.signature.toRvm() }
 
     /// The component of the JWS that the signature is computed over.
     @objc public var signedData: Data { return raw.signedData }

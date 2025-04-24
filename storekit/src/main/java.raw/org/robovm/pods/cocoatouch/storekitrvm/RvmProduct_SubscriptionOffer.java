@@ -55,7 +55,7 @@ import org.robovm.apple.coreanimation.*;
     @Property(selector = "type")
     public native RvmProduct_SubscriptionOffer_OfferType getType();
     @Property(selector = "price")
-    public native @ByVal NSDecimal getPrice();
+    public native NSDecimalNumber getPrice();
     @Property(selector = "displayPrice")
     public native String getDisplayPrice();
     @Property(selector = "period")

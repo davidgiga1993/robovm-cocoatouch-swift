@@ -65,5 +65,7 @@ import org.robovm.apple.coreanimation.*;
     }
     @Method(selector = "displayIn:error:")
     private native boolean display(UIWindowScene scene, NSError.NSErrorPtr error);
+    @Method(selector = "messages")
+    public static native RvmAsyncSequence<RvmMessage> messages();
     /*</methods>*/
 }

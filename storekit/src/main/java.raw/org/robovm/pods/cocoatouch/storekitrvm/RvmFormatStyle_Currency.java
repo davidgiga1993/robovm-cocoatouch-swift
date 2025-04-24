@@ -34,34 +34,29 @@ import org.robovm.apple.coreanimation.*;
 /*</imports>*/
 
 /*<javadoc>*/
-/**
- * @since Available in iOS 15.0 and later.
- */
+
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("StoreKitRvm.RvmStorefront")/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/RvmStorefront/*</name>*/ 
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("StoreKitRvm.RvmFormatStyle_Currency")/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/RvmFormatStyle_Currency/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class RvmStorefrontPtr extends Ptr<RvmStorefront, RvmStorefrontPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(RvmStorefront.class); }/*</bind>*/
+    /*<ptr>*/public static class RvmFormatStyle_CurrencyPtr extends Ptr<RvmFormatStyle_Currency, RvmFormatStyle_CurrencyPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(RvmFormatStyle_Currency.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    protected RvmStorefront() {}
-    protected RvmStorefront(Handle h, long handle) { super(h, handle); }
-    protected RvmStorefront(SkipInit skipInit) { super(skipInit); }
+    protected RvmFormatStyle_Currency() {}
+    protected RvmFormatStyle_Currency(Handle h, long handle) { super(h, handle); }
+    protected RvmFormatStyle_Currency(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "countryCode")
-    public native String getCountryCode();
-    @Property(selector = "id")
-    public native String getId();
+    @Property(selector = "currencyCode")
+    public native String getCurrencyCode();
+    @Property(selector = "locale")
+    public native NSLocale getLocale();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "currentWithCompletionHandler:")
-    public static native RvmTask getCurrent(@Block VoidBlock1<RvmStorefront> completionHandler);
-    @Method(selector = "updates")
-    public static native RvmAsyncSequence<RvmStorefront> updates();
+    
     /*</methods>*/
 }

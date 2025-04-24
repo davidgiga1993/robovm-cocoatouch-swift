@@ -122,6 +122,11 @@ import org.robovm.apple.coreanimation.*;
     @Property(selector = "renewalPrice")
     public native NSDecimalNumber getRenewalPrice();
     /**
+     * @since Available in iOS 16.0 and later.
+     */
+    @Property(selector = "currencyIdentifier")
+    public native String getCurrencyIdentifier();
+    /**
      * @since Available in iOS 15.0 and later.
      * @deprecated Deprecated in iOS 16.0. 'currencyCode' has been renamed to 'currency.identifier': Use the currency property instead
      */

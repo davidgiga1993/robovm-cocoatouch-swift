@@ -35,33 +35,36 @@ import org.robovm.apple.coreanimation.*;
 
 /*<javadoc>*/
 /**
- * @since Available in iOS 15.0 and later.
+ * @since Available in iOS 16.4 and later.
  */
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("StoreKitRvm.RvmStorefront")/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/RvmStorefront/*</name>*/ 
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("StoreKitRvm.RvmPurchaseIntent")/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/RvmPurchaseIntent/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class RvmStorefrontPtr extends Ptr<RvmStorefront, RvmStorefrontPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(RvmStorefront.class); }/*</bind>*/
+    /*<ptr>*/public static class RvmPurchaseIntentPtr extends Ptr<RvmPurchaseIntent, RvmPurchaseIntentPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(RvmPurchaseIntent.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    protected RvmStorefront() {}
-    protected RvmStorefront(Handle h, long handle) { super(h, handle); }
-    protected RvmStorefront(SkipInit skipInit) { super(skipInit); }
+    protected RvmPurchaseIntent() {}
+    protected RvmPurchaseIntent(Handle h, long handle) { super(h, handle); }
+    protected RvmPurchaseIntent(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "countryCode")
-    public native String getCountryCode();
+    @Property(selector = "product")
+    public native RvmProduct getProduct();
+    /**
+     * @since Available in iOS 18.0 and later.
+     */
+    @Property(selector = "offer")
+    public native RvmProduct_SubscriptionOffer getOffer();
     @Property(selector = "id")
     public native String getId();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "currentWithCompletionHandler:")
-    public static native RvmTask getCurrent(@Block VoidBlock1<RvmStorefront> completionHandler);
-    @Method(selector = "updates")
-    public static native RvmAsyncSequence<RvmStorefront> updates();
+    @Method(selector = "intents")
+    public static native RvmAsyncSequence<RvmPurchaseIntent> intents();
     /*</methods>*/
 }

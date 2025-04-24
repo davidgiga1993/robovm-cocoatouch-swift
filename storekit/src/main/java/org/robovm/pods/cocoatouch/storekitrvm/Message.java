@@ -52,6 +52,8 @@ public class Message extends NSObject {
     }
     @Method(selector = "displayIn:error:")
     private native boolean display(UIWindowScene scene, NSError.NSErrorPtr error);
+    @Method(selector = "messages")
+    public static native AsyncSequence<Message> messages();
 
      /**
       * @since Available in iOS 16.0 and later.

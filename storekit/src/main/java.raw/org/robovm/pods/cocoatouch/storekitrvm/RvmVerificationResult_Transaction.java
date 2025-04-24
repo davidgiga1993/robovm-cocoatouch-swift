@@ -64,6 +64,8 @@ import org.robovm.apple.coreanimation.*;
     public native NSData getPayloadData();
     @Property(selector = "signatureData")
     public native NSData getSignatureData();
+    @Property(selector = "signature")
+    public native RvmECDSASignature getSignature();
     @Property(selector = "signedData")
     public native NSData getSignedData();
     @Property(selector = "signedDate")

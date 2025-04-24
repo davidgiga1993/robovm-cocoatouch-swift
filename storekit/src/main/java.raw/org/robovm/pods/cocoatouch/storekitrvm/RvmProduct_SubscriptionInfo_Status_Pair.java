@@ -34,34 +34,29 @@ import org.robovm.apple.coreanimation.*;
 /*</imports>*/
 
 /*<javadoc>*/
-/**
- * @since Available in iOS 15.0 and later.
- */
+
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass("StoreKitRvm.RvmStorefront")/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/RvmStorefront/*</name>*/ 
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/RvmProduct_SubscriptionInfo_Status_Pair/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class RvmStorefrontPtr extends Ptr<RvmStorefront, RvmStorefrontPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(RvmStorefront.class); }/*</bind>*/
+    /*<ptr>*/public static class RvmProduct_SubscriptionInfo_Status_PairPtr extends Ptr<RvmProduct_SubscriptionInfo_Status_Pair, RvmProduct_SubscriptionInfo_Status_PairPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(RvmProduct_SubscriptionInfo_Status_Pair.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    protected RvmStorefront() {}
-    protected RvmStorefront(Handle h, long handle) { super(h, handle); }
-    protected RvmStorefront(SkipInit skipInit) { super(skipInit); }
+    protected RvmProduct_SubscriptionInfo_Status_Pair() {}
+    protected RvmProduct_SubscriptionInfo_Status_Pair(Handle h, long handle) { super(h, handle); }
+    protected RvmProduct_SubscriptionInfo_Status_Pair(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "countryCode")
-    public native String getCountryCode();
-    @Property(selector = "id")
-    public native String getId();
+    @Property(selector = "groupID")
+    public native String getGroupID();
+    @Property(selector = "statuses")
+    public native NSArray<RvmProduct_SubscriptionInfo_Status> getStatuses();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "currentWithCompletionHandler:")
-    public static native RvmTask getCurrent(@Block VoidBlock1<RvmStorefront> completionHandler);
-    @Method(selector = "updates")
-    public static native RvmAsyncSequence<RvmStorefront> updates();
+    
     /*</methods>*/
 }

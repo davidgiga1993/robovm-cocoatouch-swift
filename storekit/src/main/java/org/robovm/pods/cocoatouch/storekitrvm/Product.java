@@ -61,13 +61,15 @@ public class Product extends NSObject {
     @Property(selector = "productDescription")
     public native String getProductDescription();
     @Property(selector = "price")
-    public native @ByVal NSDecimal getPrice();
+    public native NSDecimalNumber getPrice();
     @Property(selector = "displayPrice")
     public native String getDisplayPrice();
     @Property(selector = "isFamilyShareable")
     public native boolean isFamilyShareable();
     @Property(selector = "subscription")
     public native SubscriptionInfo getSubscription();
+    @Property(selector = "priceFormatStyle")
+    public native FormatStyle.Currency getPriceFormatStyle();
     @Property(selector = "debugDescription")
     public native String getDebugDescription();
 
@@ -417,6 +419,11 @@ public class Product extends NSObject {
             @Property(selector = "renewalPrice")
             public native NSDecimalNumber getRenewalPrice();
             /**
+             * @since Available in iOS 16.0 and later.
+             */
+            @Property(selector = "currencyIdentifier")
+            public native String getCurrencyIdentifier();
+            /**
              * @since Available in iOS 15.0 and later.
              * @deprecated Deprecated in iOS 16.0. 'currencyCode' has been renamed to 'currency.identifier': Use the currency property instead
              */
@@ -548,8 +555,26 @@ public class Product extends NSObject {
             public native VerificationResult.Transaction getTransaction();
             @Property(selector = "renewalInfo")
             public native VerificationResult.RenewalInfo getRenewalInfo();
-        }
 
+            @Method(selector = "updates")
+            public static native AsyncSequence<Status> updates();
+            @Method(selector = "all")
+            public static native AsyncSequence<Pair> all();
+
+            @Library(Library.INTERNAL) @NativeClass("RvmProduct_SubscriptionInfo_Status_Pair")
+            public static class Pair extends NSObject {
+                static { ObjCRuntime.bind(Pair.class); }
+
+                protected Pair() {}
+                protected Pair(Handle h, long handle) { super(h, handle); }
+                protected Pair(SkipInit skipInit) { super(skipInit); }
+
+                @Property(selector = "groupID")
+                public native String getGroupID();
+                @Property(selector = "statuses")
+                public native NSArray<Status> getStatuses();
+            }
+        }
     }
 
     @Library(Library.INTERNAL) @NativeClass("RvmProduct_SubscriptionOffer")
@@ -566,7 +591,7 @@ public class Product extends NSObject {
         @Property(selector = "type")
         public native OfferType getType();
         @Property(selector = "price")
-        public native @ByVal NSDecimal getPrice();
+        public native NSDecimalNumber getPrice();
         @Property(selector = "displayPrice")
         public native String getDisplayPrice();
         @Property(selector = "period")

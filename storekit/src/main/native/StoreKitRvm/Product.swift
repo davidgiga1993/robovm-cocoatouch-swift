@@ -91,7 +91,7 @@ import StoreKit
     @objc public var productDescription: String { return raw.description }
 
     /// The price of the product in local currency.
-    @objc public var price: Decimal { return raw.price }
+    @objc public var price: NSDecimalNumber { raw.price as NSDecimalNumber }
 
     /// A localized string representation of `price`.
     @objc public var displayPrice: String { return raw.displayPrice }
@@ -644,7 +644,7 @@ extension RvmProduct {
     ///              (1) StoreKit Testing in Xcode (workaround: test your app on a device running a
     ///              more recent OS) or (2) a critical server error.
     //@available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8x.0, visionOS 1.0, *)
-    // FIXME: FormatStyle missing: @objc public var priceFormatStyle: Decimal.FormatStyle.Currency { return raw.priceFormatStyle } }
+    @objc public var priceFormatStyle: RvmFormatStyle_Currency { raw.priceFormatStyle.toRvm() }
 
     /// The format style to use when formatting subscription periods for the subscription.
     ///
@@ -831,7 +831,7 @@ extension RvmProduct {
         /// The discounted price that the offer provides in local currency.
         ///
         /// This is the price per period in the case of `.payAsYouGo`
-        @objc public var price: Decimal { return raw.price }
+        @objc public var price: NSDecimalNumber { raw.price as NSDecimalNumber }
 
         /// A localized string representation of `price`.
         @objc public var displayPrice: String { return raw.displayPrice }
@@ -1267,12 +1267,11 @@ extension RvmProduct.SubscriptionInfo {
         @available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, visionOS 1.0, *)
         @objc public var renewalPrice: NSDecimalNumber? { return raw.renewalPrice as? NSDecimalNumber }
 
-// TODO: FIXME: Locale.Currency is not available
-//        /// The `Locale.Currency` used for the purchase.
-//        ///
-//        /// - Important: The currency value is nil if the renewalPrice is unavailable.
-//        @available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, visionOS 1.0, *)
-//        @objc public var currency: Locale.Currency? { return raw.currency }
+        /// The `Locale.Currency` used for the purchase.
+        ///
+        /// - Important: The currency value is nil if the renewalPrice is unavailable.
+        @available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, visionOS 1.0, *)
+        @objc public var currencyIdentifier: String? { raw.currency?.identifier }
 
         /// ISO3A code for the currency used for the purchase.
         ///
@@ -1390,9 +1389,8 @@ extension RvmProduct.SubscriptionInfo {
     /// The data for the signature component of the JWS.
     @objc public var signatureData: Data { return raw.signatureData }
 
-// TODO: FIXME: ECDSASignature is not supported
-//    /// The signature of the JWS, converted to a `CryptoKit` value.
-//    @objc public var signature: P256.Signing.ECDSASignature { return raw.signature }
+    /// The signature of the JWS, converted to a `CryptoKit` value.
+    @objc public var signature: RvmECDSASignature { raw.signature.toRvm() }
 
     /// The component of the JWS that the signature is computed over.
     @objc public var signedData: Data { return raw.signedData }
@@ -1584,62 +1582,45 @@ extension RvmProduct.SubscriptionInfo.RenewalInfo {
     ///
     /// The conversion of `p` to a string in the assignment to `s` uses the
     /// `Point` type's `debugDescription` property.
-    @objc public override var debugDescription: String { return raw.debugDescription }
-    @objc public override var description: String { return raw.debugDescription }
+    @objc public override var debugDescription: String { raw.debugDescription }
+    @objc public override var description: String { raw.debugDescription }
 }
 
-// TODO: FIXME: AsyncSequence is not available
-//@available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, visionOS 1.0, *)
-//extension ProductRvm.SubscriptionInfo.Status {
-//
-//    public struct Statuses : AsyncSequence {
-//
-//        /// The type of element produced by this asynchronous sequence.
-//        public typealias Element = Product.SubscriptionInfo.Status
-//
-//        /// The type of asynchronous iterator that produces elements of this
-//        /// asynchronous sequence.
-//        public struct AsyncIterator : AsyncIteratorProtocol {
-//
-//            /// Asynchronously advances to the next element and returns it, or ends the
-//            /// sequence if there is no next element.
-//            ///
-//            /// - Returns: The next element, if it exists, or `nil` to signal the end of
-//            ///   the sequence.
-//            public mutating func next() async -> Product.SubscriptionInfo.Status.Statuses.Element?
-//
-//            @available(iOS 15.0, tvOS 15.0, watchOS 8.0, visionOS 1.0, macOS 12.0, *)
-//            public typealias Element = Product.SubscriptionInfo.Status.Statuses.Element
-//        }
-//
-//        /// Creates the asynchronous iterator that produces elements of this
-//        /// asynchronous sequence.
-//        ///
-//        /// - Returns: An instance of the `AsyncIterator` type used to produce
-//        /// elements of the asynchronous sequence.
-//        public func makeAsyncIterator() -> Product.SubscriptionInfo.Status.Statuses.AsyncIterator
-//    }
-//
-//    public static var updates: Product.SubscriptionInfo.Status.Statuses { get }
-//}
+@available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, visionOS 1.0, *)
+extension RvmProduct.SubscriptionInfo.Status {
+    @objc public static var updates: RvmAsyncSequence<RvmProduct.SubscriptionInfo.Status> {
+        return Product.SubscriptionInfo.Status.updates.toRvm()
+    }
+}
 
-// TODO: FIXME: AsyncStream is not available
-//@available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, visionOS 1.0, *)
-//extension ProductRvm.SubscriptionInfo.Status {
-//
-//    /// A sequence of the subscription status for each of the app's subscription groups.
-//    ///
-//    /// If `statuses` is empty, or a `groupID` isn't present in the sequence, the user has never been
-//    /// subscribed to a subscription in the group. For subscriptions which support family sharing,
-//    /// `statuses` may have several elements, representing the status of family member's subscriptions.
-//    /// If the subscription does not support family sharing, statuses will have 0 or 1 elements.
-//    ///
-//    /// - Note: For apps which support operating systems where this API is unavailable, use
-//    ///         ``Product/SubscriptionInfo/status(for:)`` to check the status for each
-//    ///         individual subscription group.
-//    @available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, visionOS 1.0, *)
-//    public static var all: AsyncStream<(groupID: String, statuses: [Product.SubscriptionInfo.Status])> { get }
-//}
+@available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, visionOS 1.0, *)
+extension RvmProduct.SubscriptionInfo.Status {
+    @objc(RvmProduct_SubscriptionInfo_Status_Pair)
+    public class Pair : NSObject {
+        @objc public let groupID: String
+        @objc public let statuses: [RvmProduct.SubscriptionInfo.Status]
+        init (groupID: String, statuses: [RvmProduct.SubscriptionInfo.Status]) {
+            self.groupID = groupID
+            self.statuses = statuses
+        }
+    }
+
+
+    /// A sequence of the subscription status for each of the app's subscription groups.
+    ///
+    /// If `statuses` is empty, or a `groupID` isn't present in the sequence, the user has never been
+    /// subscribed to a subscription in the group. For subscriptions which support family sharing,
+    /// `statuses` may have several elements, representing the status of family member's subscriptions.
+    /// If the subscription does not support family sharing, statuses will have 0 or 1 elements.
+    ///
+    /// - Note: For apps which support operating systems where this API is unavailable, use
+    ///         ``Product/SubscriptionInfo/status(for:)`` to check the status for each
+    ///         individual subscription group.
+    @available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, visionOS 1.0, *)
+    @objc public static var all: RvmAsyncSequence<RvmProduct.SubscriptionInfo.Status.Pair> {
+        return Product.SubscriptionInfo.Status.all.toRvm()
+    }
+}
 
 
 @available(iOS 15.4, macOS 12.3, tvOS 15.4, watchOS 8.5, visionOS 1.0, *)

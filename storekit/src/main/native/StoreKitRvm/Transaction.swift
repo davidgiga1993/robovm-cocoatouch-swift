@@ -525,11 +525,9 @@ import StoreKit
     @available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, visionOS 1.0, *)
     @objc public var price: NSDecimalNumber? { return raw.price as? NSDecimalNumber }
 
-// TODO: FIXME: Locale.Currency not available
-//    /// The `Locale.Currency` used for the purchase.
-//    @available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, visionOS 1.0, *)
-//    @backDeployed(before: iOS 17.2, macOS 14.2, tvOS 17.2, watchOS 10.2, visionOS 1.1)
-//    @objc public var currency: Locale.Currency? { get }
+    /// The `Locale.Currency` used for the purchase.
+    @available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, visionOS 1.0, *)
+    @objc public var currencyIdentifier: String? { raw.currency?.identifier }
 
     /// ISO3A code for the currency used for the purchase.
     ///
@@ -811,9 +809,8 @@ public class VerificationResultTransaction: NSObject {
     /// The data for the signature component of the JWS.
     @objc public var signatureData: Data { return raw.signedData }
 
-// TODO: FIXME: P256.Signing.ECDSASignature not yet awailable
-//    /// The signature of the JWS, converted to a `CryptoKit` value.
-//    @objc public var signature: P256.Signing.ECDSASignature { get }
+    /// The signature of the JWS, converted to a `CryptoKit` value.
+    @objc public var signature: RvmECDSASignature { raw.signature.toRvm() }
 
     /// The component of the JWS that the signature is computed over.
     @objc public var signedData: Data { return raw.signedData }

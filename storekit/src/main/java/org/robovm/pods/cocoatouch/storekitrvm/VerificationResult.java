@@ -30,7 +30,6 @@ public final class VerificationResult {
         public static class AppTransactionPtr extends Ptr<AppTransaction, AppTransactionPtr> {}
         static { ObjCRuntime.bind(AppTransaction.class); }
 
-
         protected AppTransaction() {}
         protected AppTransaction(Handle h, long handle) { super(h, handle); }
         protected AppTransaction(SkipInit skipInit) { super(skipInit); }
@@ -49,6 +48,8 @@ public final class VerificationResult {
         public native NSData getPayloadData();
         @Property(selector = "signatureData")
         public native NSData getSignatureData();
+        @Property(selector = "signature")
+        public native ECDSASignature getSignature();
         @Property(selector = "signedData")
         public native NSData getSignedData();
         @Property(selector = "signedDate")
@@ -75,7 +76,6 @@ public final class VerificationResult {
         public static class TransactionPtr extends Ptr<Transaction, TransactionPtr> {}
         static { ObjCRuntime.bind(Transaction.class); }
 
-
         protected Transaction() {}
         protected Transaction(Handle h, long handle) { super(h, handle); }
         protected Transaction(SkipInit skipInit) { super(skipInit); }
@@ -94,6 +94,8 @@ public final class VerificationResult {
         public native NSData getPayloadData();
         @Property(selector = "signatureData")
         public native NSData getSignatureData();
+        @Property(selector = "signature")
+        public native ECDSASignature getSignature();
         @Property(selector = "signedData")
         public native NSData getSignedData();
         @Property(selector = "signedDate")
@@ -139,6 +141,8 @@ public final class VerificationResult {
         public native NSData getPayloadData();
         @Property(selector = "signatureData")
         public native NSData getSignatureData();
+        @Property(selector = "signature")
+        public native ECDSASignature getSignature();
         @Property(selector = "signedData")
         public native NSData getSignedData();
         @Property(selector = "signedDate")
