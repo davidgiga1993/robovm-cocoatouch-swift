@@ -15,13 +15,13 @@ import StoreKit
         } else { false }
     }
 
-    public override var hash: Int { return raw.countryCode.hash * 1031 + raw.id.hash }
+    public override var hash: Int { raw.countryCode.hash * 1031 + raw.id.hash }
 
     /// The three-letter code representing the country or region associated with the App Store storefront.
-    @objc public var countryCode: String { return raw.countryCode }
+    @objc public var countryCode: String { raw.countryCode }
 
     /// A value defined by Apple that uniquely identifies an App Store storefront.
-    @objc public var id: String { return raw.id }
+    @objc public var id: String { raw.id }
 
     /// The current App Store storefront.
     @objc public static func current(completionHandler: @escaping (RvmStorefront?) -> Void) -> RvmTask {

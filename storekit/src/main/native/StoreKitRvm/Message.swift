@@ -17,10 +17,10 @@ import StoreKit
         return if let other = object as? RvmMessage { self.raw == other.raw } else { false }
     }
 
-    public override var hash: Int { return raw.hashValue }
+    public override var hash: Int { raw.hashValue }
 
     /// The reason for the message.
-    @objc public var reason: RvmMessage.Reason { return raw.reason.toRvm() }
+    @objc public var reason: RvmMessage.Reason { raw.reason.toRvm() }
 
     @available(iOS 16.0, visionOS 1.0, *)
     @available(macOS, unavailable)
@@ -37,7 +37,7 @@ import StoreKit
             return if let other = object as? Reason { self.raw == other.raw } else { false }
         }
 
-        public override var hash: Int { return raw.hashValue }
+        public override var hash: Int { raw.hashValue }
 
 
         /// The corresponding value of the raw type.
@@ -55,7 +55,7 @@ import StoreKit
         ///
         ///     print(selectedSize == PaperSize(rawValue: selectedSize.rawValue)!)
         ///     // Prints "true"
-        @objc public var rawValue: Int { return raw.rawValue }
+        @objc public var rawValue: Int { raw.rawValue }
 
         @objc public static var generic: RvmMessage.Reason { return Message.Reason.generic.toRvm() }
 
@@ -107,6 +107,6 @@ extension RvmMessage {
 @available(tvOS, unavailable)
 @available(watchOS, unavailable)
 extension RvmMessage.Reason {
-    @objc public override var description: String { return raw.localizedDescription }
+    @objc public override var description: String { raw.localizedDescription }
 }
 

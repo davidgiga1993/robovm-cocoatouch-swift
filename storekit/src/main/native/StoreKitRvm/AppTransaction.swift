@@ -17,45 +17,45 @@ import StoreKit
         return if let other = object as? RvmAppTransaction { self.raw == other.raw } else { false }
     }
 
-    public override var hash: Int { return raw.hashValue }
+    public override var hash: Int { raw.hashValue }
 
     /// The JSON representation of the transaction.
-    @objc public var jsonRepresentation: Data { return raw.jsonRepresentation }
+    @objc public var jsonRepresentation: Data { raw.jsonRepresentation }
 
     /// A number the App Store uses to uniquely identify the application.
-    @objc public var appID: NSNumber? { return raw.appID as NSNumber? }
+    @objc public var appID: NSNumber? { raw.appID as NSNumber? }
 
     /// The application version the transaction is for.
-    @objc public var appVersion: String { return raw.appVersion }
+    @objc public var appVersion: String { raw.appVersion }
 
     /// A number the App Store uses to uniquely identify the version of the application.
-    @objc public var appVersionID: NSNumber? { return raw.appVersionID as NSNumber? }
+    @objc public var appVersionID: NSNumber? { raw.appVersionID as NSNumber? }
 
     /// Identifies the application the transaction is for.
-    @objc public var bundleID: String { return raw.bundleID }
+    @objc public var bundleID: String { raw.bundleID }
 
     /// The server environment this transaction was created in.
-    @objc public var environment: RvmAppStore.Environment { return raw.environment.toRvm() }
+    @objc public var environment: RvmAppStore.Environment { raw.environment.toRvm() }
 
     /// The version of the app originally purchased.
-    @objc public var originalAppVersion: String { return raw.originalAppVersion }
+    @objc public var originalAppVersion: String { raw.originalAppVersion }
 
     /// The date this original app purchase occurred on.
-    @objc public var originalPurchaseDate: Date { return raw.originalPurchaseDate }
+    @objc public var originalPurchaseDate: Date { raw.originalPurchaseDate }
 
     /// The date this app was preordered.
-    @objc public var preorderDate: Date? { return raw.preorderDate }
+    @objc public var preorderDate: Date? { raw.preorderDate }
 
     /// A SHA-384 hash of `AppStore.deviceVerificationID` appended after
     /// `deviceVerificationNonce` (both lowercased UUID strings).
-    @objc public var deviceVerification: Data { return raw.deviceVerification }
+    @objc public var deviceVerification: Data { raw.deviceVerification }
 
     /// The nonce used when computing `deviceVerification`.
     /// - SeeAlso: `AppStore.deviceVerificationID`
-    @objc public var deviceVerificationNonce: UUID { return raw.deviceVerificationNonce }
+    @objc public var deviceVerificationNonce: UUID { raw.deviceVerificationNonce }
 
     /// The date this transaction was generated and signed.
-    @objc public var signedDate: Date { return raw.signedDate }
+    @objc public var signedDate: Date { raw.signedDate }
 
     /// Get the cached `AppTransaction` for this version of the app or make
     /// a request to get one from the App Store server if one has not been cached yet.
@@ -85,7 +85,7 @@ import StoreKit
 }
 
 extension AppTransaction{
-    func toRvm() -> RvmAppTransaction { return RvmAppTransaction(raw: self) }
+    func toRvm() -> RvmAppTransaction { RvmAppTransaction(raw: self) }
 }
 
 extension VerificationResult<AppTransaction> {
@@ -111,7 +111,7 @@ public class VerificationResultAppTransaction: NSObject {
     /// - SeeAlso: In order to check whether StoreKit was able to verify the signature,  use the
     ///           `payloadValue` property or a pattern matching technique such as a switch
     ///            statement.
-    @objc public var unsafePayloadValue: RvmAppTransaction { return raw.unsafePayloadValue.toRvm() }
+    @objc public var unsafePayloadValue: RvmAppTransaction { raw.unsafePayloadValue.toRvm() }
 
     
     @objc public var error: NSError? {
@@ -120,34 +120,34 @@ public class VerificationResultAppTransaction: NSObject {
     }
     
     /// The raw JSON web signature for the signed value.
-    @objc public var jwsRepresentation: String { return raw.jwsRepresentation }
+    @objc public var jwsRepresentation: String { raw.jwsRepresentation }
 
     /// The data for the header component of the JWS.
-    @objc public var headerData: Data { return raw.headerData }
+    @objc public var headerData: Data { raw.headerData }
 
     /// The data for the payload component of the JWS.
-    @objc public var payloadData: Data { return raw.payloadData }
+    @objc public var payloadData: Data { raw.payloadData }
 
     /// The data for the signature component of the JWS.
-    @objc public var signatureData: Data { return raw.signatureData }
+    @objc public var signatureData: Data { raw.signatureData }
 
     /// The signature of the JWS, converted to a `CryptoKit` value.
     @objc public var signature: RvmECDSASignature { raw.signature.toRvm() }
 
     /// The component of the JWS that the signature is computed over.
-    @objc public var signedData: Data { return raw.signedData }
+    @objc public var signedData: Data { raw.signedData }
 
     /// The date the signature was generated.
-    @objc public var signedDate: Date { return raw.signedDate }
+    @objc public var signedDate: Date { raw.signedDate }
 
     /// A SHA-384 hash of `AppStore.deviceVerificationID` appended after
     /// `deviceVerificationNonce` (both lowercased UUID strings).
-    @objc public var deviceVerification: Data { return raw.deviceVerification }
+    @objc public var deviceVerification: Data { raw.deviceVerification }
 
     /// The nonce used when computing `deviceVerification`.
     /// - SeeAlso: `AppStore.deviceVerificationID`
-    @objc public var deviceVerificationNonce: UUID { return raw.deviceVerificationNonce }
+    @objc public var deviceVerificationNonce: UUID { raw.deviceVerificationNonce }
     
-    public override var description: String { return raw.debugDescription }
+    public override var description: String { raw.debugDescription }
 }
 

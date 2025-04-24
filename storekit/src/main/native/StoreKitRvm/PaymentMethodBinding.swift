@@ -16,7 +16,7 @@ import StoreKit
         return if let other = object as? RvmPaymentMethodBinding { self.raw == other.raw } else { false }
     }
 
-    public override var hash: Int { return raw.hashValue }
+    public override var hash: Int { raw.hashValue }
 
     @available(iOS 16.4, visionOS 1.0, *)
     @available(macOS, unavailable)
@@ -33,7 +33,7 @@ import StoreKit
     @objc public static let PaymentMethodBindingErrorDomainRvm: String = "RvmPaymentMethodBinding.PaymentMethodBindingErrorDomain"
 
     ///The `inAppPinningId` returned from your server
-    @objc public var id: String { return raw.id }
+    @objc public var id: String { raw.id }
 
     /// Check binding eligibility and initialize the `PaymentMethodBinding`.
     ///

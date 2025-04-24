@@ -15,7 +15,7 @@ import StoreKit
         return if let other = object as? RvmTransaction { self.raw == other.raw } else { false }
     }
 
-    public override var hash: Int { return raw.hashValue }
+    public override var hash: Int { raw.hashValue }
 
     
     @available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, *)
@@ -30,7 +30,7 @@ import StoreKit
             return if let other = object as? Reason { self.raw == other.raw } else { false }
         }
 
-        public override var hash: Int { return raw.hashValue }
+        public override var hash: Int { raw.hashValue }
 
 
         /// The corresponding value of the raw type.
@@ -48,7 +48,7 @@ import StoreKit
         ///
         ///     print(selectedSize == PaperSize(rawValue: selectedSize.rawValue)!)
         ///     // Prints "true"
-        @objc public var rawValue: String { return raw.rawValue }
+        @objc public var rawValue: String { raw.rawValue }
 
         /// Creates a new instance with the specified raw value.
         ///
@@ -88,7 +88,7 @@ import StoreKit
             return if let other = object as? RevocationReason { self.raw == other.raw } else { false }
         }
 
-        public override var hash: Int { return raw.hashValue }
+        public override var hash: Int { raw.hashValue }
 
 
         /// The corresponding value of the raw type.
@@ -106,7 +106,7 @@ import StoreKit
         ///
         ///     print(selectedSize == PaperSize(rawValue: selectedSize.rawValue)!)
         ///     // Prints "true"
-        @objc public var rawValue: Int { return raw.rawValue }
+        @objc public var rawValue: Int { raw.rawValue }
 
         /// Creates a new instance with the specified raw value.
         ///
@@ -150,7 +150,7 @@ import StoreKit
             return if let other = object as? OfferType { self.raw == other.raw } else { false }
         }
 
-        public override var hash: Int { return raw.hashValue }
+        public override var hash: Int { raw.hashValue }
 
 
         /// The corresponding value of the raw type.
@@ -168,7 +168,7 @@ import StoreKit
         ///
         ///     print(selectedSize == PaperSize(rawValue: selectedSize.rawValue)!)
         ///     // Prints "true"
-        @objc public var rawValue: Int { return raw.rawValue }
+        @objc public var rawValue: Int { raw.rawValue }
 
         /// Creates a new instance with the specified raw value.
         ///
@@ -211,7 +211,7 @@ import StoreKit
             return if let other = object as? OwnershipType { self.raw == other.raw } else { false }
         }
 
-        public override var hash: Int { return raw.hashValue }
+        public override var hash: Int { raw.hashValue }
 
 
         /// The corresponding value of the raw type.
@@ -229,7 +229,7 @@ import StoreKit
         ///
         ///     print(selectedSize == PaperSize(rawValue: selectedSize.rawValue)!)
         ///     // Prints "true"
-        @objc public var rawValue: String { return raw.rawValue }
+        @objc public var rawValue: String { raw.rawValue }
 
         /// Creates a new instance with the specified raw value.
         ///
@@ -271,7 +271,7 @@ import StoreKit
             return if let other = object as? Offer { self.raw == other.raw } else { false }
         }
 
-        public override var hash: Int { return raw.hashValue }
+        public override var hash: Int { raw.hashValue }
 
 
         /// The type of payment used for the offer.
@@ -286,7 +286,7 @@ import StoreKit
                 return if let other = object as? PaymentMode { self.raw == other.raw } else { false }
             }
 
-            public override var hash: Int { return raw.hashValue }
+            public override var hash: Int { raw.hashValue }
             
             /// The corresponding value of the raw type.
             ///
@@ -303,7 +303,7 @@ import StoreKit
             ///
             ///     print(selectedSize == PaperSize(rawValue: selectedSize.rawValue)!)
             ///     // Prints "true"
-            @objc public var rawValue: String { return raw.rawValue }
+            @objc public var rawValue: String { raw.rawValue }
 
             /// Creates a new instance with the specified raw value.
             ///
@@ -343,65 +343,65 @@ import StoreKit
         /// If `offerType` is `promotional`, this will be the offer identifier. If `offerType` is `code`,
         /// this will be the offer code reference name. This will be `nil` for `introductory` offers and if
         /// there is no offer applied.
-        @objc public var id: String? { return raw.id }
+        @objc public var id: String? { raw.id }
 
         /// The type of subscription offer applied to this transaction.
-        @objc public var type: RvmTransaction.OfferType { return raw.type.toRvm() }
+        @objc public var type: RvmTransaction.OfferType { raw.type.toRvm() }
 
         /// The payment mode of the offer applied to a transaction.
         /// - Note: The payment mode may be unknown for transactions created before the release of App Store Server API 1.10.
         ///         If the payment mode is unknown, the property is nil.
-        @objc public var paymentMode: RvmTransaction.Offer.PaymentMode? { return raw.paymentMode?.toRvm() }
+        @objc public var paymentMode: RvmTransaction.Offer.PaymentMode? { raw.paymentMode?.toRvm() }
     }
 
     /// The JSON representation of the transaction.
-    @objc public var jsonRepresentation: Data { return raw.jsonRepresentation }
+    @objc public var jsonRepresentation: Data { raw.jsonRepresentation }
 
     /// Unique ID for the transaction.
-    @objc public var id: UInt64 { return raw.id }
+    @objc public var id: UInt64 { raw.id }
 
     /// The ID of the original transaction for `productID` or`subscriptionGroupID` if this is a
     /// subscription.
-    @objc public var originalID: UInt64 { return raw.originalID }
+    @objc public var originalID: UInt64 { raw.originalID }
 
     /// Uniquely identifies a subscription purchase.
     /// - Note: Only for subscriptions.
-    @objc public var webOrderLineItemID: String? { return raw.webOrderLineItemID }
+    @objc public var webOrderLineItemID: String? { raw.webOrderLineItemID }
 
     /// Identifies the product the transaction is for.
-    @objc public var productID: String { return raw.productID }
+    @objc public var productID: String { raw.productID }
 
     /// Identifies the subscription group the transaction is for.
     /// - Note: Only for subscriptions.
-    @objc public var subscriptionGroupID: String? { return raw.subscriptionGroupID }
+    @objc public var subscriptionGroupID: String? { raw.subscriptionGroupID }
 
     /// Identifies the application the transaction is for.
-    @objc public var appBundleID: String { return raw.appBundleID }
+    @objc public var appBundleID: String { raw.appBundleID }
 
     /// The date this transaction occurred on.
-    @objc public var purchaseDate: Date { return raw.purchaseDate }
+    @objc public var purchaseDate: Date { raw.purchaseDate }
 
     /// The date the original transaction for `productID` or`subscriptionGroupID` occurred on.
-    @objc public var originalPurchaseDate: Date { return raw.originalPurchaseDate }
+    @objc public var originalPurchaseDate: Date { raw.originalPurchaseDate }
 
     /// The date the users access to `productID` expires
     /// - Note: Only for subscriptions.
-    @objc public var expirationDate: Date? { return raw.expirationDate }
+    @objc public var expirationDate: Date? { raw.expirationDate }
 
     /// Quantity of `productID` purchased in the transaction.
     /// - Note: Always 1 for non-consumables and auto-renewable suscriptions.
-    @objc public var purchasedQuantity: Int { return raw.purchasedQuantity }
+    @objc public var purchasedQuantity: Int { raw.purchasedQuantity }
 
     /// If this transaction was upgraded to a subscription with a higher level of service.
     /// - Important: If this property is `true`, look for a new transaction for a subscription with a
     ///              higher level of service.
     /// - Note: Only for subscriptions.
-    @objc public var isUpgraded: Bool { return raw.isUpgraded }
+    @objc public var isUpgraded: Bool { raw.isUpgraded }
 
     /// The offer applied to this transaction.
     /// - Note: Only for subscriptions.
     @available(iOS 17.2, macOS 14.2, tvOS 17.2, watchOS 10.2, visionOS 1.1, *)
-    @objc public var offer: RvmTransaction.Offer? { return raw.offer?.toRvm() }
+    @objc public var offer: RvmTransaction.Offer? { raw.offer?.toRvm() }
 
     /// The type of subscription offer applied to this transaction.
     /// - Note: Only for subscriptions.
@@ -410,7 +410,7 @@ import StoreKit
     @available(tvOS, introduced: 15.0, deprecated: 17.2, renamed: "offer.type", message: "Use the offer property instead")
     @available(watchOS, introduced: 8.0, deprecated: 10.2, renamed: "offer.type", message: "Use the offer property instead")
     @available(visionOS, introduced: 1.0, deprecated: 1.1, renamed: "offer.type", message: "Use the offer property instead")
-    @objc public var offerType: RvmTransaction.OfferType? { return raw.offerType?.toRvm() }
+    @objc public var offerType: RvmTransaction.OfferType? { raw.offerType?.toRvm() }
 
     /// Identifies the offer applied to this transaction for `promotional` and `code` offer types.
     ///
@@ -423,7 +423,7 @@ import StoreKit
     @available(tvOS, introduced: 15.0, deprecated: 17.2, renamed: "offer.id", message: "Use the offer property instead")
     @available(watchOS, introduced: 8.0, deprecated: 10.2, renamed: "offer.id", message: "Use the offer property instead")
     @available(visionOS, introduced: 1.0, deprecated: 1.1, renamed: "offer.id", message: "Use the offer property instead")
-    @objc public var offerID: String? { return raw.offerID }
+    @objc public var offerID: String? { raw.offerID }
 
     /// The string representation of the payment mode applied to the subscription offer for this transaction.
     ///
@@ -439,24 +439,24 @@ import StoreKit
     @available(tvOS, introduced: 15.0, deprecated: 17.2, renamed: "offer.paymentMode.rawValue", message: "Use the offer property instead")
     @available(watchOS, introduced: 8.0, deprecated: 10.2, renamed: "offer.paymentMode.rawValue", message: "Use the offer property instead")
     @available(visionOS, introduced: 1.0, deprecated: 1.1, renamed: "offer.paymentMode.rawValue", message: "Use the offer property instead")
-    @objc public var offerPaymentModeStringRepresentation: String? { return raw.offerPaymentModeStringRepresentation }
+    @objc public var offerPaymentModeStringRepresentation: String? { raw.offerPaymentModeStringRepresentation }
 
     /// The date the transaction was revoked, or `nil` if it was not revoked.
-    @objc public var revocationDate: Date? { return raw.revocationDate }
+    @objc public var revocationDate: Date? { raw.revocationDate }
 
     /// The reason the transaction was revoked, or `nil` if it was not revoked.
-    @objc public var revocationReason: RvmTransaction.RevocationReason? { return raw.revocationReason?.toRvm() }
+    @objc public var revocationReason: RvmTransaction.RevocationReason? { raw.revocationReason?.toRvm() }
 
     /// The type of `productID`.
-    @objc public var productType: RvmProduct.ProductType { return raw.productType.toRvm() }
+    @objc public var productType: RvmProduct.ProductType { raw.productType.toRvm() }
 
     /// If an app account token was added as a purchase option when purchasing, this property will
     /// be the token provided. If no token was provided, this will be `nil`.
-    @objc public var appAccountToken: UUID? { return raw.appAccountToken }
+    @objc public var appAccountToken: UUID? { raw.appAccountToken }
 
     /// The server environment the transaction was created in.
     @available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, visionOS 1.0, *)
-    @objc public var environment: RvmAppStore.Environment { return raw.environment.toRvm() }
+    @objc public var environment: RvmAppStore.Environment { raw.environment.toRvm() }
 
     /// The server environment the transaction was created in.
     ///
@@ -473,11 +473,11 @@ import StoreKit
     @available(watchOS, introduced: 8.0, deprecated: 9.0, message: "Use the environment property instead")
     @available(macCatalyst, introduced: 15.0, deprecated: 16.0, message: "Use the environment property instead")
     @available(visionOS, unavailable)
-    @objc public var environmentStringRepresentation: String { return raw.environmentStringRepresentation }
+    @objc public var environmentStringRepresentation: String { raw.environmentStringRepresentation }
 
     /// The reason for the transaction.
     @available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, *)
-    @objc public var reason: RvmTransaction.Reason { return raw.reason.toRvm() }
+    @objc public var reason: RvmTransaction.Reason { raw.reason.toRvm() }
 
     /// The reason for the transaction.
     ///
@@ -495,11 +495,11 @@ import StoreKit
     @available(watchOS, introduced: 8.0, deprecated: 10.0, message: "Use the reason property instead")
     @available(macCatalyst, introduced: 15.0, deprecated: 17.0, message: "Use the reason property instead")
     @available(visionOS, unavailable)
-    @objc public var reasonStringRepresentation: String { return raw.reasonStringRepresentation }
+    @objc public var reasonStringRepresentation: String { raw.reasonStringRepresentation }
 
     /// The `Storefront` the transaction was completed in.
     @available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, visionOS 1.0, *)
-    @objc public var storefront: RvmStorefront { return raw.storefront.toRvm() }
+    @objc public var storefront: RvmStorefront { raw.storefront.toRvm() }
 
     /// The  ISO alpha-3 country code of the `Storefront` the transaction was completed in.
     ///
@@ -515,7 +515,7 @@ import StoreKit
     @available(watchOS, introduced: 8.0, deprecated: 10.0, message: "Use the storefront property instead")
     @available(macCatalyst, introduced: 15.0, deprecated: 17.0, message: "Use the storefront property instead")
     @available(visionOS, unavailable)
-    @objc public var storefrontCountryCode: String { return raw.storefrontCountryCode }
+    @objc public var storefrontCountryCode: String { raw.storefrontCountryCode }
 
     /// Amount charged to the customer when purchasing this offer.
     ///
@@ -523,7 +523,7 @@ import StoreKit
     ///              (1) StoreKit Testing in Xcode (workaround: test your app on a device running a more recent OS)
     ///              or (2) a critical server error.
     @available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, visionOS 1.0, *)
-    @objc public var price: NSDecimalNumber? { return raw.price as? NSDecimalNumber }
+    @objc public var price: NSDecimalNumber? { raw.price as? NSDecimalNumber }
 
     /// The `Locale.Currency` used for the purchase.
     @available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, visionOS 1.0, *)
@@ -539,21 +539,21 @@ import StoreKit
     @available(tvOS, introduced: 15.0, deprecated: 16.0, renamed: "currency.identifier", message: "Use the currency property instead")
     @available(watchOS, introduced: 8.0, deprecated: 9.0, renamed: "currency.identifier", message: "Use the currency property instead")
     @available(visionOS, introduced: 1.0, deprecated: 1.1, renamed: "currency.identifier", message: "Use the currency property instead")
-    @objc public var currencyCode: String? { return raw.currencyCode }
+    @objc public var currencyCode: String? { raw.currencyCode }
 
     /// A SHA-384 hash of `AppStore.deviceVerificationID` appended after
     /// `deviceVerificationNonce` (both lowercased UUID strings).
-    @objc public var deviceVerification: Data { return raw.deviceVerification }
+    @objc public var deviceVerification: Data { raw.deviceVerification }
 
     /// The nonce used when computing `deviceVerification`.
     /// - SeeAlso: `AppStore.deviceVerificationID`
-    @objc public var deviceVerificationNonce: UUID { return raw.deviceVerificationNonce }
+    @objc public var deviceVerificationNonce: UUID { raw.deviceVerificationNonce }
 
     /// Whether the user purchased this transaction, or has access to it via family sharing.
-    @objc public var ownershipType: RvmTransaction.OwnershipType { return raw.ownershipType.toRvm() }
+    @objc public var ownershipType: RvmTransaction.OwnershipType { raw.ownershipType.toRvm() }
 
     /// The date this transaction was generated and signed.
-    @objc public var signedDate: Date { return raw.signedDate }
+    @objc public var signedDate: Date { raw.signedDate }
 
     /// Call this method after giving the user access to `productID`.
     @objc public func finish(completionHandler: @escaping () -> Void) -> RvmTask {
@@ -591,7 +591,7 @@ extension RvmTransaction {
     ///
     /// The conversion of `p` to a string in the assignment to `s` uses the
     /// `Point` type's `debugDescription` property.
-    public override var debugDescription: String { return raw.debugDescription }
+    public override var debugDescription: String { raw.debugDescription }
 }
 
 @available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, visionOS 1.0, *)
@@ -734,7 +734,7 @@ extension RvmTransaction {
 
 @available(iOS 15.4, macOS 12.3, tvOS 15.4, watchOS 8.5, visionOS 1.0, *)
 extension RvmTransaction.RevocationReason {
-    public var localizedDescription: String { return raw.localizedDescription }
+    public var localizedDescription: String { raw.localizedDescription }
 }
 extension RvmTransaction.RevocationReason {
     @objc public override var description: String {
@@ -744,7 +744,7 @@ extension RvmTransaction.RevocationReason {
 
 @available(iOS 15.4, macOS 12.3, tvOS 15.4, watchOS 8.5, visionOS 1.0, *)
 extension RvmTransaction.OfferType {
-    public var localizedDescription: String { return raw.localizedDescription }
+    public var localizedDescription: String { raw.localizedDescription }
 }
 extension RvmTransaction.OfferType {
     @objc public override var description: String {
@@ -754,7 +754,7 @@ extension RvmTransaction.OfferType {
 
 @available(iOS 15.4, macOS 12.3, tvOS 15.4, watchOS 8.5, visionOS 1.0, *)
 extension RvmTransaction.OwnershipType {
-    public var localizedDescription: String { return raw.localizedDescription }
+    public var localizedDescription: String { raw.localizedDescription }
 }
 extension RvmTransaction.OwnershipType {
     @objc public override var description: String {
@@ -777,7 +777,7 @@ public class VerificationResultTransaction: NSObject {
         return if let other = object as? VerificationResultTransaction { self.raw == other.raw } else { false }
     }
 
-    public override var hash: Int { return raw.hashValue }
+    public override var hash: Int { raw.hashValue }
 
     
     /// Get the payload value from this verification result.
@@ -790,7 +790,7 @@ public class VerificationResultTransaction: NSObject {
     /// - SeeAlso: In order to check whether StoreKit was able to verify the signature,  use the
     ///           `payloadValue` property or a pattern matching technique such as a switch
     ///            statement.
-    @objc public var unsafePayloadValue: RvmTransaction { return raw.unsafePayloadValue.toRvm() }
+    @objc public var unsafePayloadValue: RvmTransaction { raw.unsafePayloadValue.toRvm() }
     
     @objc public var error: NSError? {
         guard case let .unverified(_, error) = raw else { return nil }
@@ -798,35 +798,35 @@ public class VerificationResultTransaction: NSObject {
     }
     
     /// The raw JSON web signature for the signed value.
-    @objc public var jwsRepresentation: String { return raw.jwsRepresentation }
+    @objc public var jwsRepresentation: String { raw.jwsRepresentation }
 
     /// The data for the header component of the JWS.
-    @objc public var headerData: Data { return raw.headerData }
+    @objc public var headerData: Data { raw.headerData }
 
     /// The data for the payload component of the JWS.
-    @objc public var payloadData: Data { return raw.payloadData }
+    @objc public var payloadData: Data { raw.payloadData }
 
     /// The data for the signature component of the JWS.
-    @objc public var signatureData: Data { return raw.signedData }
+    @objc public var signatureData: Data { raw.signedData }
 
     /// The signature of the JWS, converted to a `CryptoKit` value.
     @objc public var signature: RvmECDSASignature { raw.signature.toRvm() }
 
     /// The component of the JWS that the signature is computed over.
-    @objc public var signedData: Data { return raw.signedData }
+    @objc public var signedData: Data { raw.signedData }
 
     /// The date the signature was generated.
-    @objc public var signedDate: Date { return raw.signedDate }
+    @objc public var signedDate: Date { raw.signedDate }
 
     /// A SHA-384 hash of `AppStore.deviceVerificationID` appended after
     /// `deviceVerificationNonce` (both lowercased UUID strings).
-    @objc public var deviceVerification: Data { return raw.deviceVerification }
+    @objc public var deviceVerification: Data { raw.deviceVerification }
 
     /// The nonce used when computing `deviceVerification`.
     /// - SeeAlso: `AppStore.deviceVerificationID`
-    @objc public var deviceVerificationNonce: UUID { return raw.deviceVerificationNonce }
+    @objc public var deviceVerificationNonce: UUID { raw.deviceVerificationNonce }
     
-    public override var description: String { return raw.debugDescription }
+    public override var description: String { raw.debugDescription }
 }
 
 

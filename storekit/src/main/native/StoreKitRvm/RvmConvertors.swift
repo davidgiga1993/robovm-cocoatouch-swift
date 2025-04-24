@@ -5,7 +5,7 @@ import StoreKit
 //
 
 extension Product.PurchaseOption {
-    func toRvm() -> RvmProduct.PurchaseOption { return RvmProduct.PurchaseOption(raw: self) }
+    func toRvm() -> RvmProduct.PurchaseOption { RvmProduct.PurchaseOption(raw: self) }
 }
 
 extension Product.PurchaseResult {
@@ -39,40 +39,40 @@ extension Product.PurchaseError {
 }
 
 extension Product.SubscriptionInfo {
-    func toRvm() -> RvmProduct.SubscriptionInfo { return RvmProduct.SubscriptionInfo(raw: self) }
+    func toRvm() -> RvmProduct.SubscriptionInfo { RvmProduct.SubscriptionInfo(raw: self) }
 }
 
 extension Product.SubscriptionOffer {
-    func toRvm() -> RvmProduct.SubscriptionOffer { return RvmProduct.SubscriptionOffer(raw: self) }
+    func toRvm() -> RvmProduct.SubscriptionOffer { RvmProduct.SubscriptionOffer(raw: self) }
 }
 
 extension RvmProduct.SubscriptionOffer {
-    func toRaw() -> Product.SubscriptionOffer { return self.raw }
+    func toRaw() -> Product.SubscriptionOffer { self.raw }
 }
 
 extension Product.SubscriptionOffer.OfferType {
-    func toRvm() -> RvmProduct.SubscriptionOffer.OfferType { return RvmProduct.SubscriptionOffer.OfferType(raw: self) }
+    func toRvm() -> RvmProduct.SubscriptionOffer.OfferType { RvmProduct.SubscriptionOffer.OfferType(raw: self) }
 }
 
 extension Product.SubscriptionOffer.PaymentMode {
-    func toRvm() -> RvmProduct.SubscriptionOffer.PaymentMode { return RvmProduct.SubscriptionOffer.PaymentMode(raw: self) }
+    func toRvm() -> RvmProduct.SubscriptionOffer.PaymentMode { RvmProduct.SubscriptionOffer.PaymentMode(raw: self) }
 }
 
 extension Product.SubscriptionPeriod.Unit.FormatStyle {
-    func toRvm() -> RvmProduct.SubscriptionPeriod.Unit.FormatStyle { return RvmProduct.SubscriptionPeriod.Unit.FormatStyle(raw: self) }
+    func toRvm() -> RvmProduct.SubscriptionPeriod.Unit.FormatStyle { RvmProduct.SubscriptionPeriod.Unit.FormatStyle(raw: self) }
 }
 
 
 extension Product {
-    func toRvm() -> RvmProduct { return RvmProduct(raw: self) }
+    func toRvm() -> RvmProduct { RvmProduct(raw: self) }
 }
 
 extension Product.ProductType {
-    func toRvm() -> RvmProduct.ProductType { return RvmProduct.ProductType(raw: self) }
+    func toRvm() -> RvmProduct.ProductType { RvmProduct.ProductType(raw: self) }
 }
 
 extension Product.SubscriptionPeriod {
-    func toRvm() -> RvmProduct.SubscriptionPeriod { return RvmProduct.SubscriptionPeriod(raw: self) }
+    func toRvm() -> RvmProduct.SubscriptionPeriod { RvmProduct.SubscriptionPeriod(raw: self) }
 }
 
 extension Product.SubscriptionPeriod.Unit {
@@ -101,7 +101,7 @@ extension RvmProduct.SubscriptionPeriod.Unit {
 
 
 extension Product.PromotionInfo {
-    func toRvm() -> RvmProduct.PromotionInfo { return RvmProduct.PromotionInfo(raw: self) }
+    func toRvm() -> RvmProduct.PromotionInfo { RvmProduct.PromotionInfo(raw: self) }
 }
 
 extension Product.PromotionInfo.Visibility {
@@ -127,15 +127,15 @@ extension RvmProduct.PromotionInfo.Visibility {
 }
 
 extension Product.SubscriptionInfo.RenewalState {
-    func toRvm() -> RvmProduct.SubscriptionInfo.RenewalState { return RvmProduct.SubscriptionInfo.RenewalState(raw: self) }
+    func toRvm() -> RvmProduct.SubscriptionInfo.RenewalState { RvmProduct.SubscriptionInfo.RenewalState(raw: self) }
 }
 
 extension Product.SubscriptionInfo.RenewalInfo {
-    func toRvm() -> RvmProduct.SubscriptionInfo.RenewalInfo { return RvmProduct.SubscriptionInfo.RenewalInfo(raw: self) }
+    func toRvm() -> RvmProduct.SubscriptionInfo.RenewalInfo { RvmProduct.SubscriptionInfo.RenewalInfo(raw: self) }
 }
 
 extension Product.SubscriptionInfo.RenewalInfo.ExpirationReason {
-    func toRvm() -> RvmProduct.SubscriptionInfo.RenewalInfo.ExpirationReason { return RvmProduct.SubscriptionInfo.RenewalInfo.ExpirationReason(raw: self) }
+    func toRvm() -> RvmProduct.SubscriptionInfo.RenewalInfo.ExpirationReason { RvmProduct.SubscriptionInfo.RenewalInfo.ExpirationReason(raw: self) }
 }
 
 extension Product.SubscriptionInfo.RenewalInfo.PriceIncreaseStatus {
@@ -150,11 +150,11 @@ extension Product.SubscriptionInfo.RenewalInfo.PriceIncreaseStatus {
 }
 
 extension Product.SubscriptionInfo.Status {
-    func toRvm() -> RvmProduct.SubscriptionInfo.Status { return RvmProduct.SubscriptionInfo.Status(raw: self) }
+    func toRvm() -> RvmProduct.SubscriptionInfo.Status { RvmProduct.SubscriptionInfo.Status(raw: self) }
 }
 
 extension VerificationResult<Product.SubscriptionInfo.RenewalInfo> {
-    func toRvm() -> VerificationResultRenewalInfo { return VerificationResultRenewalInfo(raw: self) }
+    func toRvm() -> VerificationResultRenewalInfo { VerificationResultRenewalInfo(raw: self) }
 }
 
 extension Product.SubscriptionInfo.Status.Statuses {
@@ -196,39 +196,39 @@ extension Transaction.RefundRequestStatus {
 }
 
 extension Transaction.Reason {
-    func toRvm() -> RvmTransaction.Reason { return RvmTransaction.Reason(raw: self) }
+    func toRvm() -> RvmTransaction.Reason { RvmTransaction.Reason(raw: self) }
 }
 
 extension Transaction.RevocationReason {
-    func toRvm() -> RvmTransaction.RevocationReason { return RvmTransaction.RevocationReason(raw: self) }
+    func toRvm() -> RvmTransaction.RevocationReason { RvmTransaction.RevocationReason(raw: self) }
 }
 
 extension Transaction.Offer {
-    func toRvm() -> RvmTransaction.Offer { return RvmTransaction.Offer(raw: self) }
+    func toRvm() -> RvmTransaction.Offer { RvmTransaction.Offer(raw: self) }
 }
 
 extension Transaction.OfferType {
-    func toRvm() -> RvmTransaction.OfferType { return RvmTransaction.OfferType(raw: self) }
+    func toRvm() -> RvmTransaction.OfferType { RvmTransaction.OfferType(raw: self) }
 }
 
 extension Transaction.OwnershipType {
-    func toRvm() -> RvmTransaction.OwnershipType { return RvmTransaction.OwnershipType(raw: self) }
+    func toRvm() -> RvmTransaction.OwnershipType { RvmTransaction.OwnershipType(raw: self) }
 }
 
 extension Transaction.Offer.PaymentMode {
-    func toRvm() -> RvmTransaction.Offer.PaymentMode { return RvmTransaction.Offer.PaymentMode(raw: self) }
+    func toRvm() -> RvmTransaction.Offer.PaymentMode { RvmTransaction.Offer.PaymentMode(raw: self) }
 }
 
 extension Transaction {
-    func toRvm() -> RvmTransaction { return RvmTransaction(raw: self) }
+    func toRvm() -> RvmTransaction { RvmTransaction(raw: self) }
 }
 
 extension VerificationResult<Transaction> {
-    func toRvm() -> VerificationResultTransaction { return VerificationResultTransaction(raw: self) }
+    func toRvm() -> VerificationResultTransaction { VerificationResultTransaction(raw: self) }
 }
 
 extension Transaction.Transactions {
-    func toRvm() -> RvmAsyncSequence<VerificationResultTransaction> { return self.toRvm { $0?.toRvm() } }
+    func toRvm() -> RvmAsyncSequence<VerificationResultTransaction> { self.toRvm { $0?.toRvm() } }
 }
 
 //
@@ -249,7 +249,7 @@ extension VerificationResult.VerificationError{
         }
     }
     
-    func toRvm() -> NSError { return NSError(domain: VerificationErrorDomainRvm, code: toRvmCode()) }
+    func toRvm() -> NSError { NSError(domain: VerificationErrorDomainRvm, code: toRvmCode()) }
 }
 
 
@@ -257,7 +257,7 @@ extension VerificationResult.VerificationError{
 // MARK: Storefront related converters
 //
 extension Storefront {
-    func toRvm() -> RvmStorefront { return RvmStorefront(raw: self) }
+    func toRvm() -> RvmStorefront { RvmStorefront(raw: self) }
 }
 
 extension Storefront.Storefronts {

@@ -41,7 +41,7 @@ import StoreKit
             return if let other = object as? Token { self.raw == other.raw } else { false }
         }
 
-        public override var hash: Int { return raw.hashValue }
+        public override var hash: Int { raw.hashValue }
 
         @objc public var value: String { get{ raw.value } }
     }

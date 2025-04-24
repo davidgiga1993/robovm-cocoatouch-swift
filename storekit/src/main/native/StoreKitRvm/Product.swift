@@ -13,7 +13,7 @@ import StoreKit
         return if let other = object as? RvmProduct { self.raw == other.raw } else { false }
     }
 
-    public override var hash: Int { return raw.hashValue }
+    public override var hash: Int { raw.hashValue }
 
     @objc(RvmProduct_ProductType)
     public class ProductType: NSObject {
@@ -26,7 +26,7 @@ import StoreKit
             return if let other = object as? ProductType { self.raw == other.raw } else { false }
         }
 
-        public override var hash: Int { return raw.hashValue }
+        public override var hash: Int { raw.hashValue }
 
 
         /// The corresponding value of the raw type.
@@ -44,7 +44,7 @@ import StoreKit
         ///
         ///     print(selectedSize == PaperSize(rawValue: selectedSize.rawValue)!)
         ///     // Prints "true"
-        @objc public var rawValue: String { return raw.rawValue }
+        @objc public var rawValue: String { raw.rawValue }
 
         /// Creates a new instance with the specified raw value.
         ///
@@ -76,34 +76,34 @@ import StoreKit
     }
 
     /// The raw JSON representation of the product.
-    @objc public var jsonRepresentation: Data { return raw.jsonRepresentation}
+    @objc public var jsonRepresentation: Data { raw.jsonRepresentation}
 
     /// The unique product identifier.
-    @objc public var id: String { return raw.id }
+    @objc public var id: String { raw.id }
 
     /// The type of the product.
-    @objc public var type: RvmProduct.ProductType { return raw.type.toRvm() }
+    @objc public var type: RvmProduct.ProductType { raw.type.toRvm() }
 
     /// A localized display name of the product.
-    @objc public var displayName: String { return raw.displayName }
+    @objc public var displayName: String { raw.displayName }
 
     /// A localized description of the product.
-    @objc public var productDescription: String { return raw.description }
+    @objc public var productDescription: String { raw.description }
 
     /// The price of the product in local currency.
     @objc public var price: NSDecimalNumber { raw.price as NSDecimalNumber }
 
     /// A localized string representation of `price`.
-    @objc public var displayPrice: String { return raw.displayPrice }
+    @objc public var displayPrice: String { raw.displayPrice }
 
     /// Whether the product is available for family sharing.
-    @objc public var isFamilyShareable: Bool { return raw.isFamilyShareable }
+    @objc public var isFamilyShareable: Bool { raw.isFamilyShareable }
 
     /// Properties and functionality specific to auto-renewable subscriptions.
     ///
     /// This is never `nil` if `type` is `.autoRenewable`, and always `nil` for all other product
     /// types.
-    @objc public var subscription: RvmProduct.SubscriptionInfo? { return raw.subscription?.toRvm() }
+    @objc public var subscription: RvmProduct.SubscriptionInfo? { raw.subscription?.toRvm() }
     
     /// A type representing the stable identity of the entity associated with
     /// an instance.
@@ -127,7 +127,7 @@ extension RvmProduct {
             return if let other = object as? SubscriptionPeriod { self.raw == other.raw } else { false }
         }
 
-        public override var hash: Int { return raw.hashValue }
+        public override var hash: Int { raw.hashValue }
         
         /// A unit of time.
         @objc(RvmProduct_SubscriptionPeriod_Unit)
@@ -140,10 +140,10 @@ extension RvmProduct {
         }
 
         /// The unit of time that this period represents.
-        @objc public var unit: RvmProduct.SubscriptionPeriod.Unit { return raw.unit.toRvm() }
+        @objc public var unit: RvmProduct.SubscriptionPeriod.Unit { raw.unit.toRvm() }
 
         /// The number of units that the period represents.
-        @objc public var value: Int { return raw.value }
+        @objc public var value: Int { raw.value }
     }
 }
 
@@ -181,10 +181,10 @@ extension RvmProduct {
         }
 
         /// The product this promotion is associated with
-        @objc public var productID: Product.ID { return raw.productID }
+        @objc public var productID: Product.ID { raw.productID }
 
         /// The visibility for this promotion for the current user (i.e.: visible, hidden)
-        @objc public var visibility: RvmProduct.PromotionInfo.Visibility { return raw.visibility.toRvm() }
+        @objc public var visibility: RvmProduct.PromotionInfo.Visibility { raw.visibility.toRvm() }
 
         /// Update the properties associated with this promotion, such as the visibility
         @objc public func update(completionHandler: @escaping (Error?) -> Void) -> RvmTask {
@@ -262,7 +262,7 @@ extension RvmProduct {
             return if let other = object as? SubscriptionInfo { self.raw == other.raw } else { false }
         }
 
-        public override var hash: Int { return raw.hashValue }
+        public override var hash: Int { raw.hashValue }
 
 
         /// An optional introductory offer that will automatically be applied if the user is eligible.
@@ -282,7 +282,7 @@ extension RvmProduct {
         }
 
         /// The group identifier for this subscription.
-        @objc public var subscriptionGroupID: String { return raw.subscriptionGroupID }
+        @objc public var subscriptionGroupID: String { raw.subscriptionGroupID }
 
         /// The duration that this subscription lasts before auto-renewing.
         @objc public var subscriptionPeriod: RvmProduct.SubscriptionPeriod {
@@ -317,7 +317,7 @@ extension RvmProduct {
             return if let other = object as? PurchaseOption { self.raw == other.raw } else { false }
         }
 
-        public override var hash: Int { return raw.hashValue }
+        public override var hash: Int { raw.hashValue }
 
         /// Apply an app account token to a purchase.
         ///
@@ -588,7 +588,7 @@ extension RvmProduct {
     ///
     /// The conversion of `p` to a string in the assignment to `s` uses the
     /// `Point` type's `debugDescription` property.
-    @objc public override var debugDescription: String { return raw.debugDescription }
+    @objc public override var debugDescription: String { raw.debugDescription }
     public override var description: String {return raw.description }
 }
 
@@ -656,9 +656,9 @@ extension RvmProduct {
     ///              (1) StoreKit Testing in Xcode (workaround: test your app on a device running a
     ///              more recent OS) or (2) a critical server error.
     
-    // FIXME: ComponentsFormatStyle missing:
+    // TODO: FIXME: ComponentsFormatStyle missing:
     // @available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, visionOS 1.0, *)
-    // @objc public var subscriptionPeriodFormatStyle: Date.ComponentsFormatStyle { return raw.subscriptionPeriodFormatStyle }
+    // @objc public var subscriptionPeriodFormatStyle: Date.ComponentsFormatStyle { raw.subscriptionPeriodFormatStyle }
 }
 
 @available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, visionOS 1.0, *)
@@ -688,7 +688,7 @@ extension RvmProduct {
             return if let other = object as? SubscriptionOffer { self.raw == other.raw } else { false }
         }
 
-        public override var hash: Int { return raw.hashValue }
+        public override var hash: Int { raw.hashValue }
 
 
         @objc(RvmProduct_SubscriptionOffer_OfferType)
@@ -702,7 +702,7 @@ extension RvmProduct {
                 return if let other = object as? OfferType { self.raw == other.raw } else { false }
             }
 
-            public override var hash: Int { return raw.hashValue }
+            public override var hash: Int { raw.hashValue }
 
 
             /// The corresponding value of the raw type.
@@ -720,7 +720,7 @@ extension RvmProduct {
             ///
             ///     print(selectedSize == PaperSize(rawValue: selectedSize.rawValue)!)
             ///     // Prints "true"
-            @objc public var rawValue: String { return raw.rawValue }
+            @objc public var rawValue: String { raw.rawValue }
 
             /// Creates a new instance with the specified raw value.
             ///
@@ -743,16 +743,16 @@ extension RvmProduct {
             }
 
             @objc public static var introductory: RvmProduct.SubscriptionOffer.OfferType {
-                return Product.SubscriptionOffer.OfferType.introductory.toRvm()
+                Product.SubscriptionOffer.OfferType.introductory.toRvm()
             }
 
             @objc public static var promotional: RvmProduct.SubscriptionOffer.OfferType {
-                return Product.SubscriptionOffer.OfferType.promotional.toRvm()
+                Product.SubscriptionOffer.OfferType.promotional.toRvm()
             }
 
             @available(iOS 18.0, macOS 15.0, tvOS 18.0, watchOS 11.0, visionOS 2.0, *)
             @objc public static var winBack: RvmProduct.SubscriptionOffer.OfferType {
-                return Product.SubscriptionOffer.OfferType.winBack.toRvm()
+                Product.SubscriptionOffer.OfferType.winBack.toRvm()
             }
         }
 
@@ -767,7 +767,7 @@ extension RvmProduct {
                 return if let other = object as? PaymentMode { self.raw == other.raw } else { false }
             }
 
-            public override var hash: Int { return raw.hashValue }
+            public override var hash: Int { raw.hashValue }
 
 
             /// The corresponding value of the raw type.
@@ -785,7 +785,7 @@ extension RvmProduct {
             ///
             ///     print(selectedSize == PaperSize(rawValue: selectedSize.rawValue)!)
             ///     // Prints "true"
-            @objc public var rawValue: String { return raw.rawValue }
+            @objc public var rawValue: String { raw.rawValue }
 
             /// Creates a new instance with the specified raw value.
             ///
@@ -823,10 +823,10 @@ extension RvmProduct {
         /// The offer identifier.
         ///
         /// This is always `nil` for introductory offers and never `nil` for other offer types.
-        @objc public var id: String? { return raw.id }
+        @objc public var id: String? { raw.id }
 
         /// The type of the offer.
-        @objc public var type: RvmProduct.SubscriptionOffer.OfferType { return raw.type.toRvm() }
+        @objc public var type: RvmProduct.SubscriptionOffer.OfferType { raw.type.toRvm() }
 
         /// The discounted price that the offer provides in local currency.
         ///
@@ -834,19 +834,19 @@ extension RvmProduct {
         @objc public var price: NSDecimalNumber { raw.price as NSDecimalNumber }
 
         /// A localized string representation of `price`.
-        @objc public var displayPrice: String { return raw.displayPrice }
+        @objc public var displayPrice: String { raw.displayPrice }
 
         /// The duration that this offer lasts before auto-renewing or changing to standard subscription
         /// renewals.
-        @objc public var period: RvmProduct.SubscriptionPeriod { return raw.period.toRvm() }
+        @objc public var period: RvmProduct.SubscriptionPeriod { raw.period.toRvm() }
 
         /// The number of periods this offer will renew for.
         ///
         /// Always 1 except for `.payAsYouGo`.
-        @objc public var periodCount: Int { return raw.periodCount }
+        @objc public var periodCount: Int { raw.periodCount }
 
         /// How the user is charged for this offer.
-        @objc public var paymentMode: RvmProduct.SubscriptionOffer.PaymentMode { return raw.paymentMode.toRvm() }
+        @objc public var paymentMode: RvmProduct.SubscriptionOffer.PaymentMode { raw.paymentMode.toRvm() }
     }
 }
 
@@ -886,7 +886,7 @@ extension RvmProduct.SubscriptionPeriod {
     ///
     /// The conversion of `p` to a string in the assignment to `s` uses the
     /// `Point` type's `debugDescription` property.
-    public override var debugDescription: String { return raw.debugDescription }
+    public override var debugDescription: String { raw.debugDescription }
 }
 
 
@@ -980,7 +980,7 @@ extension RvmProduct.SubscriptionInfo {
     ///              uncommon cases: (1) StoreKit Testing in Xcode (workaround: test your app on a
     ///              device running a more recent OS) or (2) a critical server error.
     @available(iOS 16.4, macOS 13.3, tvOS 16.4, watchOS 9.4, visionOS 1.0, *)
-    @objc public var groupLevel: Int { return raw.groupLevel }
+    @objc public var groupLevel: Int { raw.groupLevel }
 
     /// A localized display name of the subscription's group.
     ///
@@ -992,7 +992,7 @@ extension RvmProduct.SubscriptionInfo {
     ///              (workaround: test your app on a device running a more recent OS) or (2) a critical
     ///              server error.
     @available(iOS 16.4, macOS 13.3, tvOS 16.4, watchOS 9.4, visionOS 1.0, *)
-    @objc public var groupDisplayName: String { return raw.groupDisplayName }
+    @objc public var groupDisplayName: String { raw.groupDisplayName }
 }
 
 @available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, visionOS 1.0, *)
@@ -1009,7 +1009,7 @@ extension RvmProduct.SubscriptionInfo {
             return if let other = object as? RenewalState { self.raw == other.raw } else { false }
         }
 
-        public override var hash: Int { return raw.hashValue }
+        public override var hash: Int { raw.hashValue }
 
         
         /// The corresponding value of the raw type.
@@ -1027,7 +1027,7 @@ extension RvmProduct.SubscriptionInfo {
         ///
         ///     print(selectedSize == PaperSize(rawValue: selectedSize.rawValue)!)
         ///     // Prints "true"
-        public var rawValue: Int { return raw.rawValue }
+        public var rawValue: Int { raw.rawValue }
 
         /// Creates a new instance with the specified raw value.
         ///
@@ -1072,7 +1072,7 @@ extension RvmProduct.SubscriptionInfo {
             return if let other = object as? RenewalInfo { self.raw == other.raw } else { false }
         }
 
-        public override var hash: Int { return raw.hashValue }
+        public override var hash: Int { raw.hashValue }
 
 
         @objc(RvmProduct_SubscriptionInfo_RenewalInfo_ExpirationReason)
@@ -1086,7 +1086,7 @@ extension RvmProduct.SubscriptionInfo {
                 return if let other = object as? ExpirationReason { self.raw == other.raw } else { false }
             }
 
-            public override var hash: Int { return raw.hashValue }
+            public override var hash: Int { raw.hashValue }
 
             /// The corresponding value of the raw type.
             ///
@@ -1103,7 +1103,7 @@ extension RvmProduct.SubscriptionInfo {
             ///
             ///     print(selectedSize == PaperSize(rawValue: selectedSize.rawValue)!)
             ///     // Prints "true"
-            @objc public var rawValue: Int { return raw.rawValue }
+            @objc public var rawValue: Int { raw.rawValue }
 
             /// Creates a new instance with the specified raw value.
             ///
@@ -1158,38 +1158,38 @@ extension RvmProduct.SubscriptionInfo {
         }
 
         /// The JSON representation of the renewal information.
-        @objc public var jsonRepresentation: Data { return raw.jsonRepresentation }
+        @objc public var jsonRepresentation: Data { raw.jsonRepresentation }
 
         /// The original transaction identifier for the subscription group.
-        @objc public var originalTransactionID: UInt64 { return raw.originalTransactionID }
+        @objc public var originalTransactionID: UInt64 { raw.originalTransactionID }
 
         /// The currently active product identifier, or the most recently active product identifier if the
         /// subscription is expired.
-        @objc public var currentProductID: String { return raw.currentProductID }
+        @objc public var currentProductID: String { raw.currentProductID }
 
         /// Whether the subscription will auto renew at the end of the current billing period.
-        @objc public var willAutoRenew: Bool { return raw.willAutoRenew }
+        @objc public var willAutoRenew: Bool { raw.willAutoRenew }
 
         /// The product identifier the subscription will auto renew to at the end of the current billing period.
         ///
         /// If the user disabled auto renewing, this property will be `nil`.
-        @objc public var autoRenewPreference: String? { return raw.autoRenewPreference }
+        @objc public var autoRenewPreference: String? { raw.autoRenewPreference }
 
         /// The reason the subscription expired.
-        @objc public var expirationReason: RvmProduct.SubscriptionInfo.RenewalInfo.ExpirationReason? { return raw.expirationReason?.toRvm() }
+        @objc public var expirationReason: RvmProduct.SubscriptionInfo.RenewalInfo.ExpirationReason? { raw.expirationReason?.toRvm() }
 
         /// The status of a price increase for the user.
-        @objc public var priceIncreaseStatus: RvmProduct.SubscriptionInfo.RenewalInfo.PriceIncreaseStatus { return raw.priceIncreaseStatus.toRvm() }
+        @objc public var priceIncreaseStatus: RvmProduct.SubscriptionInfo.RenewalInfo.PriceIncreaseStatus { raw.priceIncreaseStatus.toRvm() }
 
         /// Whether the subscription is in a billing retry period.
-        @objc public var isInBillingRetry: Bool { return raw.isInBillingRetry }
+        @objc public var isInBillingRetry: Bool { raw.isInBillingRetry }
 
         /// The date the billing grace period will expire.
-        @objc public var gracePeriodExpirationDate: Date? { return raw.gracePeriodExpirationDate }
+        @objc public var gracePeriodExpirationDate: Date? { raw.gracePeriodExpirationDate }
 
         /// A subscription offer that applies at the next renewal period.
         @available(iOS 18.0, macOS 15.0, tvOS 18.0, watchOS 11.0, visionOS 2.0, *)
-        @objc public var offer: RvmTransaction.Offer? { return raw.offer?.toRvm() }
+        @objc public var offer: RvmTransaction.Offer? { raw.offer?.toRvm() }
 
         /// Identifies the offer that will be applied to the next billing period.
         ///
@@ -1201,7 +1201,7 @@ extension RvmProduct.SubscriptionInfo {
         @available(tvOS, introduced: 15.0, deprecated: 18.0, renamed: "offer.id", message: "Use the offer property instead")
         @available(watchOS, introduced: 8.0, deprecated: 11.0, renamed: "offer.id", message: "Use the offer property instead")
         @available(visionOS, introduced: 1.0, deprecated: 2.0, renamed: "offer.id", message: "Use the offer property instead")
-        @objc public var offerID: String? { return raw.offerID }
+        @objc public var offerID: String? { raw.offerID }
 
         /// The type of the offer that will be applied to the next billing period.
         @available(iOS, introduced: 15.0, deprecated: 18.0, renamed: "offer.type", message: "Use the offer property instead")
@@ -1209,7 +1209,7 @@ extension RvmProduct.SubscriptionInfo {
         @available(tvOS, introduced: 15.0, deprecated: 18.0, renamed: "offer.type", message: "Use the offer property instead")
         @available(watchOS, introduced: 8.0, deprecated: 11.0, renamed: "offer.type", message: "Use the offer property instead")
         @available(visionOS, introduced: 1.0, deprecated: 2.0, renamed: "offer.type", message: "Use the offer property instead")
-        @objc public var offerType: RvmTransaction.OfferType? { return raw.offerType?.toRvm() }
+        @objc public var offerType: RvmTransaction.OfferType? { raw.offerType?.toRvm() }
 
         /// The string representation of the payment mode applied to the subscription offer for this transaction.
         ///
@@ -1223,11 +1223,11 @@ extension RvmProduct.SubscriptionInfo {
         @available(tvOS, introduced: 15.0, deprecated: 18.0, renamed: "offer.paymentMode.rawValue", message: "Use the offer property instead")
         @available(watchOS, introduced: 8.0, deprecated: 11.0, renamed: "offer.paymentMode.rawValue", message: "Use the offer property instead")
         @available(visionOS, introduced: 1.0, deprecated: 2.0, renamed: "offer.paymentMode.rawValue", message: "Use the offer property instead")
-        @objc public var offerPaymentModeStringRepresentation: String? { return raw.offerPaymentModeStringRepresentation }
+        @objc public var offerPaymentModeStringRepresentation: String? { raw.offerPaymentModeStringRepresentation }
 
         /// The server environment the renewal info was created in.
         @available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, visionOS 1.0, *)
-        @objc public var environment: RvmAppStore.Environment { return raw.environment.toRvm() }
+        @objc public var environment: RvmAppStore.Environment { raw.environment.toRvm() }
 
         /// The server environment the renewal info was created in.
         ///
@@ -1245,7 +1245,7 @@ extension RvmProduct.SubscriptionInfo {
         @available(watchOS, introduced: 8.0, deprecated: 9.0, message: "Use the environment property instead")
         @available(macCatalyst, introduced: 15.0, deprecated: 16.0, message: "Use the environment property instead")
         @available(visionOS, unavailable)
-        @objc public var environmentStringRepresentation: String { return raw.environmentStringRepresentation }
+        @objc public var environmentStringRepresentation: String { raw.environmentStringRepresentation }
 
         /// The date that marks the start of the most recent period of *continuous subscription*.
         ///
@@ -1257,15 +1257,15 @@ extension RvmProduct.SubscriptionInfo {
         ///              (1) StoreKit Testing in Xcode (workaround: test your app on a device running
         ///              a more recent OS) or (2) a critical server error.
         @available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, visionOS 1.0, *)
-        @objc public var recentSubscriptionStartDate: Date { return raw.recentSubscriptionStartDate }
+        @objc public var recentSubscriptionStartDate: Date { raw.recentSubscriptionStartDate }
 
         /// The date of the next subscription renewal.
         @available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, visionOS 1.0, *)
-        @objc public var renewalDate: Date? { return raw.renewalDate }
+        @objc public var renewalDate: Date? { raw.renewalDate }
 
         /// The amount that will be charged to the customer on the next renewal date.
         @available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, visionOS 1.0, *)
-        @objc public var renewalPrice: NSDecimalNumber? { return raw.renewalPrice as? NSDecimalNumber }
+        @objc public var renewalPrice: NSDecimalNumber? { raw.renewalPrice as? NSDecimalNumber }
 
         /// The `Locale.Currency` used for the purchase.
         ///
@@ -1283,23 +1283,23 @@ extension RvmProduct.SubscriptionInfo {
         @available(tvOS, introduced: 15.0, deprecated: 16.0, renamed: "currency.identifier", message: "Use the currency property instead")
         @available(watchOS, introduced: 8.0, deprecated: 9.0, renamed: "currency.identifier", message: "Use the currency property instead")
         @available(visionOS, unavailable)
-        @objc public var currencyCode: String? { return raw.currencyCode }
+        @objc public var currencyCode: String? { raw.currencyCode }
 
         /// List of win-back offers the user is eligible to apply to a purchase for this subscription group.
         /// - Note: The first item in the list is the best fit offer for the current user.
         @available(iOS 18.0, macOS 15.0, tvOS 18.0, watchOS 11.0, visionOS 2.0, *)
-        @objc public var eligibleWinBackOfferIDs: [String] { return raw.eligibleWinBackOfferIDs }
+        @objc public var eligibleWinBackOfferIDs: [String] { raw.eligibleWinBackOfferIDs }
 
         /// A SHA-384 hash of `AppStore.deviceVerificationID` appended after
         /// `deviceVerificationNonce` (both lowercased UUID strings).
-        @objc public var deviceVerification: Data { return raw.deviceVerification }
+        @objc public var deviceVerification: Data { raw.deviceVerification }
 
         /// The nonce used when computing `deviceVerification`.
         /// - SeeAlso: `AppStore.deviceVerificationID`
-        @objc public var deviceVerificationNonce: UUID { return raw.deviceVerificationNonce }
+        @objc public var deviceVerificationNonce: UUID { raw.deviceVerificationNonce }
 
         /// The date this renewal info was generated and signed.
-        @objc public var signedDate: Date { return raw.signedDate }
+        @objc public var signedDate: Date { raw.signedDate }
     }
 
     @objc(RvmProduct_SubscriptionInfo_Status)
@@ -1313,13 +1313,13 @@ extension RvmProduct.SubscriptionInfo {
             return if let other = object as? Status { self.raw == other.raw } else { false }
         }
 
-        public override var hash: Int { return raw.hashValue }
+        public override var hash: Int { raw.hashValue }
 
-        @objc public var state: RvmProduct.SubscriptionInfo.RenewalState { return raw.state.toRvm() }
+        @objc public var state: RvmProduct.SubscriptionInfo.RenewalState { raw.state.toRvm() }
 
-        @objc public var transaction: VerificationResultTransaction { return raw.transaction.toRvm() }
+        @objc public var transaction: VerificationResultTransaction { raw.transaction.toRvm() }
 
-        @objc public var renewalInfo: VerificationResultRenewalInfo { return raw.renewalInfo.toRvm() }
+        @objc public var renewalInfo: VerificationResultRenewalInfo { raw.renewalInfo.toRvm() }
     }
 
     @objc public func status(completionHandler: @escaping ([RvmProduct.SubscriptionInfo.Status]?, Error?) -> Void) -> RvmTask {
@@ -1360,7 +1360,7 @@ extension RvmProduct.SubscriptionInfo {
         return if let other = object as? VerificationResultRenewalInfo { self.raw == other.raw } else { false }
     }
 
-    public override var hash: Int { return raw.hashValue }
+    public override var hash: Int { raw.hashValue }
     
     @objc public func getPayloadValue() throws -> RvmProduct.SubscriptionInfo.RenewalInfo {
         return try raw.payloadValue.toRvm()
@@ -1370,7 +1370,7 @@ extension RvmProduct.SubscriptionInfo {
     /// - SeeAlso: In order to check whether StoreKit was able to verify the signature,  use the
     ///           `payloadValue` property or a pattern matching technique such as a switch
     ///            statement.
-    @objc public var unsafePayloadValue: RvmProduct.SubscriptionInfo.RenewalInfo { return raw.unsafePayloadValue.toRvm() }
+    @objc public var unsafePayloadValue: RvmProduct.SubscriptionInfo.RenewalInfo { raw.unsafePayloadValue.toRvm() }
 
     @objc public var error: NSError? {
         guard case let .unverified(_, error) = raw else { return nil }
@@ -1378,35 +1378,35 @@ extension RvmProduct.SubscriptionInfo {
     }
     
     /// The raw JSON web signature for the signed value.
-    @objc public var jwsRepresentation: String { return raw.jwsRepresentation }
+    @objc public var jwsRepresentation: String { raw.jwsRepresentation }
 
     /// The data for the header component of the JWS.
-    @objc public var headerData: Data { return raw.headerData }
+    @objc public var headerData: Data { raw.headerData }
 
     /// The data for the payload component of the JWS.
-    @objc public var payloadData: Data { return raw.payloadData }
+    @objc public var payloadData: Data { raw.payloadData }
 
     /// The data for the signature component of the JWS.
-    @objc public var signatureData: Data { return raw.signatureData }
+    @objc public var signatureData: Data { raw.signatureData }
 
     /// The signature of the JWS, converted to a `CryptoKit` value.
     @objc public var signature: RvmECDSASignature { raw.signature.toRvm() }
 
     /// The component of the JWS that the signature is computed over.
-    @objc public var signedData: Data { return raw.signedData }
+    @objc public var signedData: Data { raw.signedData }
 
     /// The date the signature was generated.
-    @objc public var signedDate: Date { return raw.signedDate }
+    @objc public var signedDate: Date { raw.signedDate }
 
     /// A SHA-384 hash of `AppStore.deviceVerificationID` appended after
     /// `deviceVerificationNonce` (both lowercased UUID strings).
-    @objc public var deviceVerification: Data { return raw.deviceVerification }
+    @objc public var deviceVerification: Data { raw.deviceVerification }
 
     /// The nonce used when computing `deviceVerification`.
     /// - SeeAlso: `AppStore.deviceVerificationID`
-    @objc public var deviceVerificationNonce: UUID { return raw.deviceVerificationNonce }
+    @objc public var deviceVerificationNonce: UUID { raw.deviceVerificationNonce }
 
-    public override var description: String { return raw.debugDescription }
+    public override var description: String { raw.debugDescription }
 }
 
 
@@ -1437,7 +1437,7 @@ extension RvmProduct.PurchaseOption {
     ///
     /// The conversion of `p` to a string in the assignment to `s` uses the
     /// `Point` type's `debugDescription` property.
-    @objc public override var debugDescription: String { return raw.debugDescription }
+    @objc public override var debugDescription: String { raw.debugDescription }
 }
 
 
@@ -1456,20 +1456,20 @@ extension RvmProduct.SubscriptionOffer {
             return if let other = object as? Signature { self.raw == other.raw } else { false }
         }
 
-        public override var hash: Int { return raw.hashValue }
+        public override var hash: Int { raw.hashValue }
         
         /// The key ID of the private key used to generate `signature`. The private key and key ID
         /// can be generated on App Store Connect.
-        @objc public var keyID: String { return raw.keyID }
+        @objc public var keyID: String { raw.keyID }
         
         /// The nonce used in `signature`.
-        @objc public var nonce: UUID { return raw.nonce }
+        @objc public var nonce: UUID { raw.nonce }
         
         /// The time the signature was generated in milliseconds since 1970.
-        @objc public var timestamp: Int { return raw.timestamp }
+        @objc public var timestamp: Int { raw.timestamp }
         
         /// The cryptographic signature of the offer parameters, generated on your server.
-        @objc public var signature: Data { return raw.signature }
+        @objc public var signature: Data { raw.signature }
         
         /// Create a new signature to validate a promotional offer.
         ///
@@ -1504,7 +1504,7 @@ extension RvmProduct.SubscriptionPeriod.Unit {
             return if let other = object as? FormatStyle { self.raw == other.raw } else { false }
         }
 
-        public override var hash: Int { return raw.hashValue }
+        public override var hash: Int { raw.hashValue }
 
         
         /// Get a human readable representation of the unit, localized for the subscription the format style
@@ -1546,7 +1546,7 @@ extension RvmProduct.SubscriptionPeriod.Unit {
 
 @available(iOS 15.4, macOS 12.3, tvOS 15.4, watchOS 8.5, visionOS 1.0, *)
 extension RvmProduct.SubscriptionInfo.RenewalState {
-    @objc public var localizedDescription: String { return raw.localizedDescription }
+    @objc public var localizedDescription: String { raw.localizedDescription }
 }
 
 extension RvmProduct.SubscriptionInfo.RenewalState {
@@ -1625,7 +1625,7 @@ extension RvmProduct.SubscriptionInfo.Status {
 
 @available(iOS 15.4, macOS 12.3, tvOS 15.4, watchOS 8.5, visionOS 1.0, *)
 extension RvmProduct.SubscriptionOffer.OfferType {
-    @objc public var localizedDescription: String { return raw.localizedDescription }
+    @objc public var localizedDescription: String { raw.localizedDescription }
 }
 extension RvmProduct.SubscriptionOffer.OfferType {
     @objc public override var description: String {
@@ -1635,7 +1635,7 @@ extension RvmProduct.SubscriptionOffer.OfferType {
 
 @available(iOS 15.4, macOS 12.3, tvOS 15.4, watchOS 8.5, visionOS 1.0, *)
 extension RvmProduct.SubscriptionOffer.PaymentMode {
-    @objc public var localizedDescription: String { return raw.localizedDescription }
+    @objc public var localizedDescription: String { raw.localizedDescription }
 }
 extension RvmProduct.SubscriptionOffer.PaymentMode {
     @objc public override var description: String {
@@ -1645,7 +1645,7 @@ extension RvmProduct.SubscriptionOffer.PaymentMode {
 
 @available(iOS 15.4, macOS 12.3, tvOS 15.4, watchOS 8.5, visionOS 1.0, *)
 extension RvmProduct.SubscriptionInfo.RenewalInfo.ExpirationReason {
-    @objc public var localizedDescription: String { return raw.localizedDescription }
+    @objc public var localizedDescription: String { raw.localizedDescription }
 }
 extension RvmProduct.SubscriptionInfo.RenewalInfo.ExpirationReason {
     @objc public override var description: String {
