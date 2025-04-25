@@ -2,6 +2,7 @@ import Foundation
 import StoreKit
 
 
+@available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, visionOS 1.0, *)
 @objc public class RvmAppTransaction: NSObject {
     private var raw: AppTransaction!
     
@@ -84,15 +85,18 @@ import StoreKit
     }
 }
 
+@available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, visionOS 1.0, *)
 extension AppTransaction{
     func toRvm() -> RvmAppTransaction { RvmAppTransaction(raw: self) }
 }
 
+@available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, visionOS 1.0, *)
 extension VerificationResult<AppTransaction> {
     func toRvm() -> VerificationResultAppTransaction { return VerificationResultAppTransaction(raw: self) }
 }
 
 
+@available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, visionOS 1.0, *)
 @objc(RvmVerificationResult_AppTransaction)
 public class VerificationResultAppTransaction: NSObject {
     let raw: VerificationResult<AppTransaction>

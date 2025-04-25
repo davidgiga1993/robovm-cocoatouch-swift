@@ -86,6 +86,7 @@ extension RvmAppStore {
 }
 
 
+@available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, visionOS 1.0, *)
 extension RvmAppStore {
 
     /// Displays a sheet in the window scene that enables users to redeem a subscription offer code that
@@ -123,6 +124,7 @@ extension RvmAppStore {
 }
 
 
+@available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, visionOS 1.0, *)
 extension RvmAppStore {
     @available(iOS 16.0, visionOS 1.0, *)
     @available(macOS, unavailable)

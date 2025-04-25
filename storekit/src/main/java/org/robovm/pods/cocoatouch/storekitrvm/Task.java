@@ -21,7 +21,9 @@ import org.robovm.objc.annotation.*;
 import org.robovm.rt.bro.annotation.*;
 import org.robovm.apple.foundation.*;
 
-
+/**
+ * @since Available in iOS 13.0 and later.
+ */
 @Library(Library.INTERNAL) @NativeClass("StoreKitRvm.RvmTask")
 public class Task extends NSObject {
     static { ObjCRuntime.bind(Task.class); }

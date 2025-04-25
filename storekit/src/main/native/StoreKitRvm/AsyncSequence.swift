@@ -4,6 +4,7 @@
 //
 
 
+@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 extension AsyncSequence {
     /// extention that converts swith AsyncSequence into ObjC wrapper
     /// @param elementConverter -- converts Swift element into acceptable ObjC one 

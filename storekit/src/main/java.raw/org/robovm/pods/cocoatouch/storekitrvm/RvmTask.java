@@ -34,7 +34,9 @@ import org.robovm.apple.coreanimation.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
+/**
+ * @since Available in iOS 13.0 and later.
+ */
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass("StoreKitRvm.RvmTask")/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/RvmTask/*</name>*/ 

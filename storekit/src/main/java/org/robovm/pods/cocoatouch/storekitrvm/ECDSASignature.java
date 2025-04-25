@@ -23,6 +23,9 @@ import org.robovm.objc.annotation.NativeClass;
 import org.robovm.objc.annotation.Property;
 import org.robovm.rt.bro.annotation.Library;
 
+/**
+ * @since Available in iOS 13.0 and later.
+ */
 @Library(Library.INTERNAL) @NativeClass("StoreKitRvm.RvmECDSASignature")
 public class ECDSASignature extends NSObject {
     static { ObjCRuntime.bind(ECDSASignature.class); }

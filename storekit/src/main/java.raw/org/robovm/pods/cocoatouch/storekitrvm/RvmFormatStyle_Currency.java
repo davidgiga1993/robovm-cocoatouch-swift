@@ -34,7 +34,9 @@ import org.robovm.apple.coreanimation.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
+/**
+ * @since Available in iOS 15.0 and later.
+ */
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass("StoreKitRvm.RvmFormatStyle_Currency")/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/RvmFormatStyle_Currency/*</name>*/ 

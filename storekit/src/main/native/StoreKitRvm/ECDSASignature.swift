@@ -6,6 +6,7 @@
 import Foundation
 import CryptoKit
 
+@available(iOS 13.0, macOS 10.15, watchOS 6.0, tvOS 13.0, *)
 @objc public class RvmECDSASignature: NSObject {
     let raw: P256.Signing.ECDSASignature
     init(raw: P256.Signing.ECDSASignature) {
@@ -21,6 +22,7 @@ import CryptoKit
 
 }
 
+@available(iOS 13.0, macOS 10.15, watchOS 6.0, tvOS 13.0, *)
 extension P256.Signing.ECDSASignature {
     func toRvm() -> RvmECDSASignature { return RvmECDSASignature(raw: self) }
 }

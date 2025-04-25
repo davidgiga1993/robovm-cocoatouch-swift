@@ -32,7 +32,6 @@ import org.robovm.rt.bro.ptr.Ptr;
 /**
  * @since Available in iOS 15.0 and later.
  */
-
 @Library(Library.INTERNAL) @NativeClass("RvmAppStore")
 public class AppStore extends NSObject {
 
@@ -77,6 +76,9 @@ public class AppStore extends NSObject {
     @Method(selector = "showManageSubscriptionsIn:subscriptionGroupID:completionHandler:")
     public static native Task showManageSubscriptions(UIWindowScene scene, String subscriptionGroupID, @Block VoidBlock1<NSError> completionHandler);
 
+    /**
+     * @since Available in iOS 16.0 and later.
+     */
     @Library(Library.INTERNAL) @NativeClass("RvmAppStore_Environment")
     public static class Environment extends NSObject {
 

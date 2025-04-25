@@ -9,11 +9,13 @@
 ///
 /// RvmAsyncIterator
 ///
+API_AVAILABLE(ios(13))
 @interface RvmAsyncIterator<T: NSObject*>()
 @property (nonatomic) RvmTask* (^nextProducer) (void (^_Nonnull competionHandler)(T _Nullable, NSError* _Nullable));
 @end
 
 /// Wrapper for iterator. Underlaying iterator should be captured in `nextProducer` block
+API_AVAILABLE(ios(13))
 @implementation RvmAsyncIterator
 
 - (id) initWithNextProducer: (RvmTask* (^) (void (^_Nonnull competionHandler)(NSObject* _Nullable, NSError* _Nullable))) nextProducer {

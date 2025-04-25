@@ -25,6 +25,9 @@ import org.robovm.apple.foundation.*;
 
 public final class VerificationResult {
 
+    /**
+     * @since Available in iOS 16.0 and later.
+     */
     @Library(Library.INTERNAL) @NativeClass("RvmVerificationResult_AppTransaction")
     public static class AppTransaction extends NSObject {
         public static class AppTransactionPtr extends Ptr<AppTransaction, AppTransactionPtr> {}
@@ -70,7 +73,9 @@ public final class VerificationResult {
         private native org.robovm.pods.cocoatouch.storekitrvm.AppTransaction getPayloadValue(NSError.NSErrorPtr error);
     }
 
-    @Library(Library.INTERNAL) @NativeClass("RvmVerificationResult_Transaction")
+    /**
+     * @since Available in iOS 15.0 and later.
+     */    @Library(Library.INTERNAL) @NativeClass("RvmVerificationResult_Transaction")
     public static class Transaction extends NSObject {
 
         public static class TransactionPtr extends Ptr<Transaction, TransactionPtr> {}

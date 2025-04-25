@@ -26,7 +26,9 @@ import org.robovm.rt.bro.annotation.Library;
 public class FormatStyle {
     private FormatStyle() {}
 
-    
+    /**
+     * @since Available in iOS 15.0 and later.
+     */
     @Library(Library.INTERNAL) @NativeClass("StoreKitRvm.RvmFormatStyle_Currency")
     public static class Currency extends NSObject {
         static { ObjCRuntime.bind(Currency.class); }

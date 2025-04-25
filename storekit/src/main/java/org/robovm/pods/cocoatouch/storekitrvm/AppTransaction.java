@@ -27,7 +27,9 @@ import org.robovm.objc.block.VoidBlock2;
 import org.robovm.rt.bro.annotation.Library;
 import org.robovm.rt.bro.ptr.Ptr;
 
-
+/**
+ * @since Available in iOS 16.0 and later.
+ */
 @Library(Library.INTERNAL) @NativeClass("StoreKitRvm.RvmAppTransaction")
 public class AppTransaction extends NSObject {
 

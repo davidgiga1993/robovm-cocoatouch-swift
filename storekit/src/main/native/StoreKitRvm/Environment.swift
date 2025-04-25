@@ -2,7 +2,9 @@ import Foundation
 import StoreKit
 
 
+@available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, visionOS 1.0, *)
 extension RvmAppStore {
+    @available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, visionOS 1.0, *)
     @objc(RvmAppStore_Environment)
     public class Environment: NSObject {
         let raw: AppStore.Environment
