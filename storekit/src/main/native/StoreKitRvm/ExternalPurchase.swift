@@ -25,6 +25,7 @@ import StoreKit
     ///            external purchases if the result is `NoticeResult.continuedWithExternalPurchaseToken`
     ///            or `NoticeResult.continued`.
     /// - Throws: A `StoreKitError`
+    @available(iOS 17.4, macOS 14.4, tvOS 17.4, watchOS 10.4, visionOS 1.1, *)
     @objc public static func presentNoticeSheet(completionHandler: @escaping (RvmExternalPurchase.NoticeResult?, Error?) -> Void) -> RvmTask {
         return Task.detached {
             do {

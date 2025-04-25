@@ -2,6 +2,7 @@ import Foundation
 import StoreKit
 
 
+@available(iOS 16.0, *)
 @objc public class RvmAppTransaction: NSObject {
     private var raw: AppTransaction!
     
@@ -84,16 +85,19 @@ import StoreKit
     }
 }
 
+@available(iOS 16.0, *)
 extension AppTransaction{
     func toRvm() -> RvmAppTransaction { RvmAppTransaction(raw: self) }
 }
 
+@available(iOS 16.0, *)
 extension VerificationResult<AppTransaction> {
     func toRvm() -> VerificationResultAppTransaction { return VerificationResultAppTransaction(raw: self) }
 }
 
 
 @objc(RvmVerificationResult_AppTransaction)
+@available(iOS 16.0, *)
 public class VerificationResultAppTransaction: NSObject {
     let raw: VerificationResult<AppTransaction>
     @objc public let isVerified: Bool

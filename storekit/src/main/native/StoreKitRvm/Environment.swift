@@ -1,9 +1,10 @@
 import Foundation
 import StoreKit
 
-
+@available(iOS 15.0, *)
 extension RvmAppStore {
     @objc(RvmAppStore_Environment)
+	@available(iOS 16.0, *)
     public class Environment: NSObject {
         let raw: AppStore.Environment
         init(raw: AppStore.Environment) { self.raw = raw }

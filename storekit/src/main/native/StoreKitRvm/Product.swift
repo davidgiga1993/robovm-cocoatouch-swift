@@ -147,6 +147,7 @@ extension RvmProduct {
     }
 }
 
+@available(iOS 15.0, *)
 extension RvmProduct {
 
     @available(iOS 16.4, *)
@@ -854,6 +855,8 @@ extension RvmProduct {
 extension RvmProduct.ProductType {
     public var localizedDescription: String { raw.localizedDescription }
 }
+
+@available(iOS 15.0, *)
 extension RvmProduct.ProductType {
     @objc public override var description: String {
         return if #available(iOS 15.4, *) { localizedDescription } else { super.description }
@@ -931,6 +934,7 @@ extension RvmProduct.SubscriptionPeriod {
 //    public func formatted<S>(_ format: S, referenceDate: Date = .now) -> S.FormatOutput where S : FormatStyle, S.FormatInput == Duration
 //}
 
+@available(iOS 16.4, macOS 13.3, tvOS 16.4, watchOS 9.4, visionOS 1.0, *)
 extension RvmProduct.SubscriptionPeriod {
 
     /// A period of one week.
@@ -1303,6 +1307,7 @@ extension RvmProduct.SubscriptionInfo {
     }
 
     @objc(RvmProduct_SubscriptionInfo_Status)
+	@available(iOS 15.0, *)
     public class Status : NSObject {
         let raw: Product.SubscriptionInfo.Status
         init (raw: Product.SubscriptionInfo.Status) {
@@ -1319,6 +1324,7 @@ extension RvmProduct.SubscriptionInfo {
 
         @objc public var transaction: VerificationResultTransaction { raw.transaction.toRvm() }
 
+		@available(iOS 16.0, *)
         @objc public var renewalInfo: VerificationResultRenewalInfo { raw.renewalInfo.toRvm() }
     }
 
@@ -1440,7 +1446,7 @@ extension RvmProduct.PurchaseOption {
     @objc public override var debugDescription: String { raw.debugDescription }
 }
 
-
+@available(iOS 15.0, *)
 extension RvmProduct.SubscriptionOffer {
 
     /// The metadata of the signature used to validate a promotional offer.
@@ -1549,6 +1555,7 @@ extension RvmProduct.SubscriptionInfo.RenewalState {
     @objc public var localizedDescription: String { raw.localizedDescription }
 }
 
+@available(iOS 15.0, *)
 extension RvmProduct.SubscriptionInfo.RenewalState {
     @objc public override var description: String {
         return if #available(iOS 15.4, *) { localizedDescription } else { super.description }
@@ -1627,6 +1634,8 @@ extension RvmProduct.SubscriptionInfo.Status {
 extension RvmProduct.SubscriptionOffer.OfferType {
     @objc public var localizedDescription: String { raw.localizedDescription }
 }
+
+@available(iOS 15.0, *)
 extension RvmProduct.SubscriptionOffer.OfferType {
     @objc public override var description: String {
         return if #available(iOS 15.4, *) { localizedDescription } else { super.description }
@@ -1637,6 +1646,8 @@ extension RvmProduct.SubscriptionOffer.OfferType {
 extension RvmProduct.SubscriptionOffer.PaymentMode {
     @objc public var localizedDescription: String { raw.localizedDescription }
 }
+
+@available(iOS 15.0, *)
 extension RvmProduct.SubscriptionOffer.PaymentMode {
     @objc public override var description: String {
         return if #available(iOS 15.4, *) { localizedDescription } else { super.description }
@@ -1647,6 +1658,8 @@ extension RvmProduct.SubscriptionOffer.PaymentMode {
 extension RvmProduct.SubscriptionInfo.RenewalInfo.ExpirationReason {
     @objc public var localizedDescription: String { raw.localizedDescription }
 }
+
+@available(iOS 15.0, *)
 extension RvmProduct.SubscriptionInfo.RenewalInfo.ExpirationReason {
     @objc public override var description: String {
         return if #available(iOS 15.4, *) { localizedDescription } else { super.description }

@@ -736,6 +736,8 @@ extension RvmTransaction {
 extension RvmTransaction.RevocationReason {
     public var localizedDescription: String { raw.localizedDescription }
 }
+
+@available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, visionOS 1.0, *)
 extension RvmTransaction.RevocationReason {
     @objc public override var description: String {
         return if #available(iOS 15.4, *) { localizedDescription } else { super.description }
@@ -746,6 +748,8 @@ extension RvmTransaction.RevocationReason {
 extension RvmTransaction.OfferType {
     public var localizedDescription: String { raw.localizedDescription }
 }
+
+@available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, visionOS 1.0, *)
 extension RvmTransaction.OfferType {
     @objc public override var description: String {
         return if #available(iOS 15.4, *) { localizedDescription } else { super.description }
@@ -756,6 +760,8 @@ extension RvmTransaction.OfferType {
 extension RvmTransaction.OwnershipType {
     public var localizedDescription: String { raw.localizedDescription }
 }
+
+@available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, visionOS 1.0, *)
 extension RvmTransaction.OwnershipType {
     @objc public override var description: String {
         return if #available(iOS 15.4, *) { localizedDescription } else { super.description }
@@ -764,6 +770,7 @@ extension RvmTransaction.OwnershipType {
 
 
 @objc(RvmVerificationResult_Transaction)
+@available(iOS 15.0, *)
 public class VerificationResultTransaction: NSObject {
     let raw: VerificationResult<Transaction>
     @objc public let isVerified: Bool

@@ -4,10 +4,12 @@ import StoreKit
 // MARK: Product related converters
 //
 
+@available(iOS 15.0, *)
 extension Product.PurchaseOption {
     func toRvm() -> RvmProduct.PurchaseOption { RvmProduct.PurchaseOption(raw: self) }
 }
 
+@available(iOS 15.0, *)
 extension Product.PurchaseResult {
     func toRvm() -> RvmProduct.PurchaseResult {
         return switch self {
@@ -19,6 +21,7 @@ extension Product.PurchaseResult {
     }
 }
 
+@available(iOS 15.0, *)
 extension Product.PurchaseError {
     func toRvm() -> NSError {
         let code = switch self {
@@ -38,43 +41,53 @@ extension Product.PurchaseError {
     }
 }
 
+@available(iOS 15.0, *)
 extension Product.SubscriptionInfo {
     func toRvm() -> RvmProduct.SubscriptionInfo { RvmProduct.SubscriptionInfo(raw: self) }
 }
 
+@available(iOS 15.0, *)
 extension Product.SubscriptionOffer {
     func toRvm() -> RvmProduct.SubscriptionOffer { RvmProduct.SubscriptionOffer(raw: self) }
 }
 
+@available(iOS 15.0, *)
 extension RvmProduct.SubscriptionOffer {
     func toRaw() -> Product.SubscriptionOffer { self.raw }
 }
 
+@available(iOS 15.0, *)
 extension Product.SubscriptionOffer.OfferType {
     func toRvm() -> RvmProduct.SubscriptionOffer.OfferType { RvmProduct.SubscriptionOffer.OfferType(raw: self) }
 }
 
+@available(iOS 15.0, *)
 extension Product.SubscriptionOffer.PaymentMode {
     func toRvm() -> RvmProduct.SubscriptionOffer.PaymentMode { RvmProduct.SubscriptionOffer.PaymentMode(raw: self) }
 }
 
+@available(iOS 16.0, *)
 extension Product.SubscriptionPeriod.Unit.FormatStyle {
     func toRvm() -> RvmProduct.SubscriptionPeriod.Unit.FormatStyle { RvmProduct.SubscriptionPeriod.Unit.FormatStyle(raw: self) }
 }
 
 
+@available(iOS 15.0, *)
 extension Product {
     func toRvm() -> RvmProduct { RvmProduct(raw: self) }
 }
 
+@available(iOS 15.0, *)
 extension Product.ProductType {
     func toRvm() -> RvmProduct.ProductType { RvmProduct.ProductType(raw: self) }
 }
 
+@available(iOS 15.0, *)
 extension Product.SubscriptionPeriod {
     func toRvm() -> RvmProduct.SubscriptionPeriod { RvmProduct.SubscriptionPeriod(raw: self) }
 }
 
+@available(iOS 15.0, *)
 extension Product.SubscriptionPeriod.Unit {
     func toRvm() -> RvmProduct.SubscriptionPeriod.Unit {
         switch self {
@@ -87,6 +100,7 @@ extension Product.SubscriptionPeriod.Unit {
     }
 }
 
+@available(iOS 16.0, *)
 extension RvmProduct.SubscriptionPeriod.Unit {
     func toRaw() -> Product.SubscriptionPeriod.Unit {
         return switch self {
@@ -100,10 +114,12 @@ extension RvmProduct.SubscriptionPeriod.Unit {
 }
 
 
+@available(iOS 16.4, *)
 extension Product.PromotionInfo {
     func toRvm() -> RvmProduct.PromotionInfo { RvmProduct.PromotionInfo(raw: self) }
 }
 
+@available(iOS 16.4, *)
 extension Product.PromotionInfo.Visibility {
     func toRvm() -> RvmProduct.PromotionInfo.Visibility {
         switch self {
@@ -115,6 +131,7 @@ extension Product.PromotionInfo.Visibility {
     }
 }
 
+@available(iOS 16.4, *)
 extension RvmProduct.PromotionInfo.Visibility {
     func toRaw() throws -> Product.PromotionInfo.Visibility {
         switch self {
@@ -126,18 +143,22 @@ extension RvmProduct.PromotionInfo.Visibility {
     }
 }
 
+@available(iOS 15.0, *)
 extension Product.SubscriptionInfo.RenewalState {
     func toRvm() -> RvmProduct.SubscriptionInfo.RenewalState { RvmProduct.SubscriptionInfo.RenewalState(raw: self) }
 }
 
+@available(iOS 15.0, *)
 extension Product.SubscriptionInfo.RenewalInfo {
     func toRvm() -> RvmProduct.SubscriptionInfo.RenewalInfo { RvmProduct.SubscriptionInfo.RenewalInfo(raw: self) }
 }
 
+@available(iOS 15.0, *)
 extension Product.SubscriptionInfo.RenewalInfo.ExpirationReason {
     func toRvm() -> RvmProduct.SubscriptionInfo.RenewalInfo.ExpirationReason { RvmProduct.SubscriptionInfo.RenewalInfo.ExpirationReason(raw: self) }
 }
 
+@available(iOS 15.0, *)
 extension Product.SubscriptionInfo.RenewalInfo.PriceIncreaseStatus {
     func toRvm() -> RvmProduct.SubscriptionInfo.RenewalInfo.PriceIncreaseStatus {
          return switch self {
@@ -149,18 +170,22 @@ extension Product.SubscriptionInfo.RenewalInfo.PriceIncreaseStatus {
     }
 }
 
+@available(iOS 15.0, *)
 extension Product.SubscriptionInfo.Status {
     func toRvm() -> RvmProduct.SubscriptionInfo.Status { RvmProduct.SubscriptionInfo.Status(raw: self) }
 }
 
+@available(iOS 16.0, *)
 extension VerificationResult<Product.SubscriptionInfo.RenewalInfo> {
     func toRvm() -> VerificationResultRenewalInfo { VerificationResultRenewalInfo(raw: self) }
 }
 
+@available(iOS 15.0, *)
 extension Product.SubscriptionInfo.Status.Statuses {
     func toRvm() -> RvmAsyncSequence<RvmProduct.SubscriptionInfo.Status> { self.toRvm { $0?.toRvm() } }
 }
 
+@available(iOS 17.0, *)
 extension AsyncStream<(groupID: String, statuses: [Product.SubscriptionInfo.Status])> {
     func toRvm() -> RvmAsyncSequence<RvmProduct.SubscriptionInfo.Status.Pair> {
         return self.toRvm {
@@ -174,6 +199,7 @@ extension AsyncStream<(groupID: String, statuses: [Product.SubscriptionInfo.Stat
 // MARK: Transaction related converters
 //
 
+@available(iOS 15.0, *)
 extension Transaction.RefundRequestError {
     func toRvm() -> NSError {
         let code = switch self {
@@ -185,6 +211,7 @@ extension Transaction.RefundRequestError {
     }
 }
 
+@available(iOS 15.0, *)
 extension Transaction.RefundRequestStatus {
     func toRvm() -> RvmTransaction.RefundRequestStatus {
         switch self {
@@ -195,38 +222,47 @@ extension Transaction.RefundRequestStatus {
     }
 }
 
+@available(iOS 17.0, *)
 extension Transaction.Reason {
     func toRvm() -> RvmTransaction.Reason { RvmTransaction.Reason(raw: self) }
 }
 
+@available(iOS 15.0, *)
 extension Transaction.RevocationReason {
     func toRvm() -> RvmTransaction.RevocationReason { RvmTransaction.RevocationReason(raw: self) }
 }
 
+@available(iOS 17.2, *)
 extension Transaction.Offer {
     func toRvm() -> RvmTransaction.Offer { RvmTransaction.Offer(raw: self) }
 }
 
+@available(iOS 15.0, *)
 extension Transaction.OfferType {
     func toRvm() -> RvmTransaction.OfferType { RvmTransaction.OfferType(raw: self) }
 }
 
+@available(iOS 15.0, *)
 extension Transaction.OwnershipType {
     func toRvm() -> RvmTransaction.OwnershipType { RvmTransaction.OwnershipType(raw: self) }
 }
 
+@available(iOS 17.2, *)
 extension Transaction.Offer.PaymentMode {
     func toRvm() -> RvmTransaction.Offer.PaymentMode { RvmTransaction.Offer.PaymentMode(raw: self) }
 }
 
+@available(iOS 15.0, *)
 extension Transaction {
     func toRvm() -> RvmTransaction { RvmTransaction(raw: self) }
 }
 
+@available(iOS 15.0, *)
 extension VerificationResult<Transaction> {
     func toRvm() -> VerificationResultTransaction { VerificationResultTransaction(raw: self) }
 }
 
+@available(iOS 15.0, *)
 extension Transaction.Transactions {
     func toRvm() -> RvmAsyncSequence<VerificationResultTransaction> { self.toRvm { $0?.toRvm() } }
 }
@@ -235,6 +271,7 @@ extension Transaction.Transactions {
 // MARK: VerificationResult related converters
 //
 
+@available(iOS 15.0, *)
 extension VerificationResult.VerificationError{
     func toRvmCode() -> Int {
         return switch self {
@@ -256,10 +293,12 @@ extension VerificationResult.VerificationError{
 //
 // MARK: Storefront related converters
 //
+@available(iOS 15.0, *)
 extension Storefront {
     func toRvm() -> RvmStorefront { RvmStorefront(raw: self) }
 }
 
+@available(iOS 15.0, *)
 extension Storefront.Storefronts {
     func toRvm() -> RvmAsyncSequence<RvmStorefront> { self.toRvm { $0?.toRvm() } }
 }
@@ -267,6 +306,7 @@ extension Storefront.Storefronts {
 //
 // MARK: PaymentMethodBinding related converters
 //
+@available(iOS 16.4, *)
 extension PaymentMethodBinding.PaymentMethodBindingError {
     func toRvmCode() -> Int {
         switch self {
@@ -288,14 +328,17 @@ extension PaymentMethodBinding.PaymentMethodBindingError {
 //
 // MARK: PaymentMethodBinding related converters
 //
+@available(iOS 16.0, *)
 extension Message {
     func toRvm() -> RvmMessage { RvmMessage(raw: self) }
 }
 
+@available(iOS 16.0, *)
 extension Message.Reason {
     func toRvm() -> RvmMessage.Reason { RvmMessage.Reason(raw: self) }
 }
 
+@available(iOS 16.0, *)
 extension Message.Messages {
     func toRvm() -> RvmAsyncSequence<RvmMessage> { self.toRvm { $0?.toRvm() } }
 }
@@ -304,6 +347,7 @@ extension Message.Messages {
 //
 // MARK: ExternalPurchaseCustomLink related converters
 //
+@available(iOS 18.1, *)
 extension RvmExternalPurchaseCustomLink.NoticeType {
     func toRaw() throws -> ExternalPurchaseCustomLink.NoticeType {
         switch self {
@@ -317,6 +361,7 @@ extension RvmExternalPurchaseCustomLink.NoticeType {
     }
 }
 
+@available(iOS 18.1, *)
 extension ExternalPurchaseCustomLink.NoticeResult {
     func toRvm() -> RvmExternalPurchaseCustomLink.NoticeResult {
         switch self {
@@ -328,6 +373,7 @@ extension ExternalPurchaseCustomLink.NoticeResult {
 }
 
 
+@available(iOS 18.1, *)
 extension ExternalPurchaseCustomLink.Token {
     func toRvm() -> RvmExternalPurchaseCustomLink.Token {
         return RvmExternalPurchaseCustomLink.Token(raw: self)
@@ -338,6 +384,7 @@ extension ExternalPurchaseCustomLink.Token {
 //
 // MARK: ExternalPurchase related converters
 //
+@available(iOS 17.4, *)
 extension ExternalPurchase.NoticeResult {
     func toRvm() -> RvmExternalPurchase.NoticeResult {
         switch self {
@@ -355,6 +402,7 @@ extension ExternalPurchase.NoticeResult {
 //
 // MARK: AppStore related converters
 //
+@available(iOS 16.0, *)
 extension AppStore.Environment {
     func toRvm() -> RvmAppStore.Environment { RvmAppStore.Environment(raw: self) }
 }
@@ -363,10 +411,12 @@ extension AppStore.Environment {
 //
 // MARK: PurchaseIntent
 //
+@available(iOS 16.4, macOS 14.4, *)
 extension PurchaseIntent {
     func toRvm() -> RvmPurchaseIntent { RvmPurchaseIntent(raw: self) }
 }
 
+@available(iOS 16.4, macOS 14.4, *)
 extension PurchaseIntent.PurchaseIntents {
     func toRvm() -> RvmAsyncSequence<RvmPurchaseIntent> { self.toRvm { $0?.toRvm() } }
 }
