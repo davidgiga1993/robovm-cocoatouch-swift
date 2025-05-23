@@ -19,6 +19,7 @@ enums:
     RvmProduct_PurchaseError: { nserror: true }
     RvmTransaction_RefundRequestError: { nserror: true }
     RvmTransaction_RefundRequestStatus: {}
+    RvmStoreKitError: { nserror: true }
 
 classes:
     RvmTask: {}

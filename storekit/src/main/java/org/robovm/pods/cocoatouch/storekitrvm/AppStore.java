@@ -55,6 +55,9 @@ public class AppStore extends NSObject {
     @Method(selector = "presentOfferCodeRedeemSheetIn:completionHandler:")
     public static native Task presentOfferCodeRedeemSheet(UIWindowScene scene, @Block VoidBlock1<NSError> completionHandler);
 
+    @Method(selector = "StoreKitErrorDomain")
+    public static native String StoreKitErrorDomain();
+
     /**
      * @since Available in iOS 16.0 and later.
      */

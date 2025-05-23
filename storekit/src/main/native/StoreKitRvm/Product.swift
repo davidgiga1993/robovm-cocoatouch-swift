@@ -193,7 +193,7 @@ extension RvmProduct {
                 do {
                     try await self.raw.update()
                     completionHandler(nil)
-                } catch let error { completionHandler(error) }
+                } catch let error { completionHandler(error.toRvmError()) }
                 return
             }.toRvm()
         }
@@ -203,7 +203,7 @@ extension RvmProduct {
             return Task.detached {
                 do {
                     completionHandler(try await Product.PromotionInfo.currentOrder.map { $0.toRvm() }, nil)
-                } catch let error { completionHandler(nil, error) }
+                } catch let error { completionHandler(nil, error.toRvmError()) }
                 return
             }.toRvm()
         }
@@ -214,7 +214,7 @@ extension RvmProduct {
                 do {
                     try await Product.PromotionInfo.updateProductOrder(byID: order)
                     completionHandler(nil)
-                } catch let error { completionHandler(error) }
+                } catch let error { completionHandler(error.toRvmError()) }
                 return
             }.toRvm()
         }
@@ -229,7 +229,7 @@ extension RvmProduct {
                 do {
                     try await Product.PromotionInfo.updateProductVisibility(visibility.toRaw(), for: productID)
                     completionHandler(nil)
-                } catch let error { completionHandler(error) }
+                } catch let error { completionHandler(error.toRvmError()) }
                 return
             }.toRvm()
         }
@@ -240,7 +240,7 @@ extension RvmProduct {
                 do {
                     try await Product.PromotionInfo.updateAll(promotions.map{ $0.raw })
                     completionHandler(nil)
-                } catch let error { completionHandler(error) }
+                } catch let error { completionHandler(error.toRvmError()) }
                 return
             }.toRvm()
         }
@@ -454,6 +454,19 @@ extension RvmProduct {
         @objc public static let pending = PurchaseResult()
 
         @objc public static let unknown = PurchaseResult()
+        
+        @objc public override var description: String {
+            switch self {
+            case is PurchaseResult.success:
+                return "Purchase succeeded"
+            case PurchaseResult.userCancelled:
+                return "User cancelled purchase"
+            case PurchaseResult.pending:
+                return "Purchase pending user action"
+            default:
+                return "Unknown purchase result"
+            }
+        }
     }
 
     @objc public static let PurchaseErrorDomain = "ProductRvm.PurchaseErrorDomain"
@@ -501,10 +514,8 @@ extension RvmProduct {
         return Task.detached {
             do {
                 completionHandler(try await self.raw.purchase(options: Set(options.map { $0.raw })).toRvm(), nil)
-            } catch let e as Product.PurchaseError {
-                completionHandler(nil, e.toRvm())
-            }catch let e {
-                completionHandler(nil, e)
+            } catch let e {
+                completionHandler(nil, e.toRvmError())
             }
             return
         }.toRvm()
@@ -527,10 +538,8 @@ extension RvmProduct {
         return Task.detached {
             do {
                 completionHandler(try await self.raw.purchase(confirmIn: scene, options: Set(options.map { $0.raw })).toRvm(), nil)
-            } catch let e as Product.PurchaseError {
-                completionHandler(nil, e.toRvm())
-            }catch let e {
-                completionHandler(nil, e)
+            } catch let e {
+                completionHandler(nil, e.toRvmError())
             }
             return
         }.toRvm()
@@ -553,10 +562,8 @@ extension RvmProduct {
         return Task.detached {
             do {
                 completionHandler(try await self.raw.purchase(confirmIn: viewController, options: Set(options.map { $0.raw })).toRvm(), nil)
-            } catch let e as Product.PurchaseError {
-                completionHandler(nil, e.toRvm())
-            }catch let e {
-                completionHandler(nil, e)
+            } catch let e {
+                completionHandler(nil, e.toRvmError())
             }
             return
         }.toRvm()
@@ -609,8 +616,8 @@ extension RvmProduct {
         return Task.detached {
             do {
                 completionHandler(try await Product.products(for: identifiers).map{ $0.toRvm()}, nil)
-            }catch let e {
-                completionHandler(nil, e)
+            } catch let e {
+                completionHandler(nil, e.toRvmError())
             }
             return
         }.toRvm()
@@ -1331,7 +1338,7 @@ extension RvmProduct.SubscriptionInfo {
             do {
                 completionHandler(try await self.raw.status.map { $0.toRvm() }, nil)
             } catch let error {
-                completionHandler(nil, error)
+                completionHandler(nil, error.toRvmError())
             }
             return
         }.toRvm()
@@ -1342,7 +1349,7 @@ extension RvmProduct.SubscriptionInfo {
             do {
                 completionHandler(try await Product.SubscriptionInfo.status(for: groupID).map { $0.toRvm() }, nil)
             } catch let error {
-                completionHandler(nil, error)
+                completionHandler(nil, error.toRvmError())
             }
             return
         }.toRvm()

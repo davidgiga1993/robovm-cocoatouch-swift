@@ -32,7 +32,7 @@ import StoreKit
                 try await ExternalPurchaseLink.open()
                 completionHandler(nil)
             } catch let error {
-                completionHandler(error)
+                completionHandler(error.toRvmError())
             }
             return
         }.toRvm()
@@ -45,7 +45,7 @@ import StoreKit
                 try await ExternalPurchaseLink.open(url: url)
                 completionHandler(nil)
             } catch let error {
-                completionHandler(error)
+                completionHandler(error.toRvmError())
             }
             return
         }.toRvm()

@@ -31,7 +31,7 @@ import StoreKit
                 try await ExternalLinkAccount.open()
                 completionHandler(nil)
             } catch let error {
-                completionHandler(error)
+                completionHandler(error.toRvmError())
             }
             return
         }.toRvm()

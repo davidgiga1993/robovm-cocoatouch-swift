@@ -37,7 +37,7 @@ extension Product.PurchaseError {
         @unknown default: RvmProduct.PurchaseError.unknown.rawValue
         }
         
-        return NSError(domain: RvmProduct.PurchaseErrorDomain, code: code)
+        return NSError(domain: RvmProduct.PurchaseErrorDomain, code: code, userInfo: (self as NSError).userInfo)
     }
 }
 
@@ -206,7 +206,7 @@ extension Transaction.RefundRequestError {
             case .failed: RvmTransaction.RefundRequestError.failed.rawValue
             @unknown default: RvmTransaction.RefundRequestError.unknown.rawValue
         }
-        return NSError(domain: RvmTransaction.RefundRequestErrorDomain, code: code)
+        return NSError(domain: RvmTransaction.RefundRequestErrorDomain, code: code, userInfo: (self as NSError).userInfo)
     }
 }
 
@@ -285,7 +285,9 @@ extension VerificationResult.VerificationError{
         }
     }
     
-    func toRvm() -> NSError { NSError(domain: VerificationErrorDomainRvm, code: toRvmCode()) }
+    func toRvm() -> NSError {
+        NSError(domain: VerificationErrorDomainRvm, code: toRvmCode(), userInfo: (self as NSError).userInfo)
+    }
 }
 
 
@@ -318,7 +320,7 @@ extension PaymentMethodBinding.PaymentMethodBindingError {
     }
     
     func toRvm() -> NSError {
-        return NSError(domain: RvmPaymentMethodBinding.PaymentMethodBindingErrorDomainRvm, code: toRvmCode())
+        return NSError(domain: RvmPaymentMethodBinding.PaymentMethodBindingErrorDomainRvm, code: toRvmCode(), userInfo: (self as NSError).userInfo)
     }
 
 }
@@ -422,3 +424,58 @@ extension PurchaseIntent.PurchaseIntents {
     func toRvm() -> RvmAsyncSequence<RvmPurchaseIntent> { self.toRvm { $0?.toRvm() } }
 }
 
+//
+// MARK: PaymentMethodBinding related converters
+//
+@available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, visionOS 1.0, *)
+extension StoreKitError {
+    func toRvmCode() -> Int {
+        switch self {
+        case .unknown: return RvmStoreKitError.unknown.rawValue
+        case .userCancelled: return RvmStoreKitError.userCancelled.rawValue
+        case .networkError(_): return RvmStoreKitError.networkError.rawValue
+        case .systemError(_): return RvmStoreKitError.systemError.rawValue
+        case .notAvailableInStorefront: return RvmStoreKitError.notAvailableInStorefront.rawValue
+        default:
+            if #available(iOS 15.4, *) {
+                if case .notEntitled = self {
+                    return RvmStoreKitError.notEntitled.rawValue
+                }
+            }
+            if #available(iOS 18.4, *) {
+                if case .unsupported = self {
+                    return RvmStoreKitError.unsupported.rawValue
+                }
+            }
+            return RvmStoreKitError.unknown.rawValue
+        }
+    }
+    
+    func toRvm() -> NSError {
+        return NSError(domain: RvmAppStore.StoreKitErrorDomain, code: toRvmCode(), userInfo: (self as NSError).userInfo)
+    }
+}
+
+
+//
+// Generic Error to possible NSError
+//
+@available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, visionOS 1.0, *)
+extension Error {
+    func toRvmError() -> Error {
+        switch self {
+        case let e as StoreKitError: return e.toRvm()
+        case let e as VerificationResult<Any>.VerificationError: return e.toRvm()
+        case let e as Transaction.RefundRequestError: return e.toRvm()
+        case let e as Product.PurchaseError: return e.toRvm()
+        case let e as StoreKitError: return e.toRvm()
+            default:
+            if #available(iOS 16.4, *) {
+                if let e = self as? PaymentMethodBinding.PaymentMethodBindingError {
+                    return e.toRvm()
+                }
+            }
+            return self
+        }
+    }
+}

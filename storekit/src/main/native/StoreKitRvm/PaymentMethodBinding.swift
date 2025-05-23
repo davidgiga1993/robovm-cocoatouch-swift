@@ -43,10 +43,8 @@ import StoreKit
         return Task.detached {
             do {
                 completionHandler(RvmPaymentMethodBinding(raw: try await PaymentMethodBinding(id: id)), nil)
-            } catch let e as PaymentMethodBinding.PaymentMethodBindingError {
-                completionHandler(nil, e.toRvm())
             } catch let e {
-                completionHandler(nil, e)
+                completionHandler(nil, e.toRvmError())
             }
             return
         }.toRvm()
@@ -60,10 +58,8 @@ import StoreKit
             do {
                 try await self.raw.bind()
                 completionHandler(nil)
-            } catch let e as PaymentMethodBinding.PaymentMethodBindingError {
-                completionHandler(e.toRvm())
             } catch let e {
-                completionHandler(e)
+                completionHandler(e.toRvmError())
             }
             return
         }.toRvm()

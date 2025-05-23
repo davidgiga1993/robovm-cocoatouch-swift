@@ -63,15 +63,17 @@ import org.robovm.apple.coreanimation.*;
     /**
      * @since Available in iOS 16.0 and later.
      */
-    @Method(selector = "presentOfferCodeRedeemSheetIn:completionHandler:")
-    public static native RvmTask presentOfferCodeRedeemSheet(UIWindowScene scene, @Block VoidBlock1<NSError> completionHandler);
-    /**
-     * @since Available in iOS 16.0 and later.
-     */
     @Method(selector = "requestReviewIn:")
     public static native void requestReviewIn(UIWindowScene scene);
     @Method(selector = "syncWithCompletionHandler:")
     public static native RvmTask sync(@Block VoidBlock1<NSError> completionHandler);
+    /**
+     * @since Available in iOS 16.0 and later.
+     */
+    @Method(selector = "presentOfferCodeRedeemSheetIn:completionHandler:")
+    public static native RvmTask presentOfferCodeRedeemSheet(UIWindowScene scene, @Block VoidBlock1<NSError> completionHandler);
+    @Method(selector = "StoreKitErrorDomain")
+    public static native String StoreKitErrorDomain();
     /**
      * @since Available in iOS 15.0 and later.
      */

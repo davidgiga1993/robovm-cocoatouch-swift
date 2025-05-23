@@ -65,7 +65,7 @@ import StoreKit
             do {
                 completionHandler(try await AppTransaction.shared.toRvm(), nil)
             } catch let error {
-                completionHandler(nil, error)
+                completionHandler(nil, error.toRvmError())
             }
             return
         }.toRvm()
@@ -78,7 +78,7 @@ import StoreKit
             do {
                 completionHandler(try await AppTransaction.refresh().toRvm(), nil)
             } catch let error {
-                completionHandler(nil, error)
+                completionHandler(nil, error.toRvmError())
             }
             return
         }.toRvm()

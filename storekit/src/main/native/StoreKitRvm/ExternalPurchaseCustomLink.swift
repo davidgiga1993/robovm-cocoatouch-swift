@@ -73,7 +73,7 @@ import StoreKit
             do {
                 completionHandler(try await ExternalPurchaseCustomLink.showNotice(type: type.toRaw()).toRvm(), nil)
             } catch let error {
-                completionHandler(RvmExternalPurchaseCustomLink.NoticeResult.unknown, error)
+                completionHandler(RvmExternalPurchaseCustomLink.NoticeResult.unknown, error.toRvmError())
             }
             return
         }.toRvm()
@@ -94,7 +94,7 @@ import StoreKit
             do {
                 completionHandler(try await ExternalPurchaseCustomLink.token(for: tokenType)?.toRvm(), nil)
             } catch let error {
-                completionHandler(nil, error)
+                completionHandler(nil, error.toRvmError())
             }
             return
         }.toRvm()

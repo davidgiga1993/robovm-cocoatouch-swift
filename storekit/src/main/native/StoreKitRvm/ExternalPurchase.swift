@@ -30,7 +30,7 @@ import StoreKit
             do {
                 completionHandler(try await ExternalPurchase.presentNoticeSheet().toRvm(), nil)
             } catch let error {
-                completionHandler(nil, error)
+                completionHandler(nil, error.toRvmError())
             }
             return
         }.toRvm()

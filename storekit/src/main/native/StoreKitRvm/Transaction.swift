@@ -677,10 +677,8 @@ extension RvmTransaction {
         return Task.detached {
             do {
                 completionHandler(try await self.raw.beginRefundRequest(in: scene).toRvm(), nil)
-            } catch let e as Transaction.RefundRequestError {
-                completionHandler(RefundRequestStatus.unknown, e.toRvm())
             } catch let e {
-                completionHandler(RefundRequestStatus.unknown, e)
+                completionHandler(RefundRequestStatus.unknown, e.toRvmError())
             }
             return
         }.toRvm()
@@ -703,10 +701,8 @@ extension RvmTransaction {
         return Task.detached {
             do {
                 completionHandler(try await Transaction.beginRefundRequest(for: transactionID, in: scene).toRvm(), nil)
-            } catch let e as Transaction.RefundRequestError {
-                completionHandler(RefundRequestStatus.unknown, e.toRvm())
             } catch let e {
-                completionHandler(RefundRequestStatus.unknown, e)
+                completionHandler(RefundRequestStatus.unknown, e.toRvmError())
             }
             return
         }.toRvm()

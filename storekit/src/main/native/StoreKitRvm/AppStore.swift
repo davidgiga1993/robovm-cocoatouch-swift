@@ -38,7 +38,7 @@ extension RvmAppStore {
                 try await AppStore.sync()
                 completionHandler(nil)
             } catch let error {
-                completionHandler(error)
+                completionHandler(error.toRvmError())
             }
             return
         }.toRvm()
@@ -60,7 +60,7 @@ extension RvmAppStore {
                 try await AppStore.showManageSubscriptions(in: scene)
                 completionHandler(nil)
             } catch let error {
-                completionHandler(error)
+                completionHandler(error.toRvmError())
             }
             return
         }.toRvm()
@@ -78,7 +78,7 @@ extension RvmAppStore {
                 try await AppStore.showManageSubscriptions(in: scene, subscriptionGroupID: subscriptionGroupID)
                 completionHandler(nil)
             } catch let error {
-                completionHandler(error)
+                completionHandler(error.toRvmError())
             }
             return
         }.toRvm()
@@ -116,7 +116,7 @@ extension RvmAppStore {
                 try await AppStore.presentOfferCodeRedeemSheet(in: scene)
                 completionHandler(nil)
             } catch let error {
-                completionHandler(error)
+                completionHandler(error.toRvmError())
             }
             return
         }.toRvm()
@@ -131,4 +131,13 @@ extension RvmAppStore {
     @available(watchOS, unavailable)
     @available(tvOS, unavailable)
     @objc @MainActor public static func requestReview(in scene: UIWindowScene) { AppStore.requestReview(in: scene) }
+}
+
+
+///
+/// Rvm extension to keep constants 
+///
+@available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, visionOS 1.0, *)
+extension RvmAppStore {
+    @objc static public let StoreKitErrorDomain: String = "RvmStoreKit.StoreKitErrorDomain"
 }
