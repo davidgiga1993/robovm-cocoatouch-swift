@@ -35,7 +35,7 @@ suspend fun Product.getCurrentEntitlement() = suspendCancellableTask<Verificatio
  * @since Available in iOS 15.0 and later.
  * @throws NSErrorException
  */
-suspend fun Product.purchase(options: Set<Product.PurchaseOption> = emptySet()) = suspendCancellableTask { cont ->
+suspend fun Product.purchase(options: Set<PurchaseOption> = emptySet()) = suspendCancellableTask { cont ->
     purchase(options.toNSSet(), cont::completionHandler)
 }
 
@@ -43,7 +43,7 @@ suspend fun Product.purchase(options: Set<Product.PurchaseOption> = emptySet()) 
  * @since Available in iOS 17.0 and later.
  * @throws NSErrorException
  */
-suspend fun Product.purchase(scene: UIScene, options: Set<Product.PurchaseOption> = emptySet()) = suspendCancellableTask { cont ->
+suspend fun Product.purchase(scene: UIScene, options: Set<PurchaseOption> = emptySet()) = suspendCancellableTask { cont ->
     purchase(scene, options.toNSSet(), cont::completionHandler)
 }
 
@@ -51,7 +51,7 @@ suspend fun Product.purchase(scene: UIScene, options: Set<Product.PurchaseOption
  * @since Available in iOS 18.2 and later.
  * @throws NSErrorException
  */
-suspend fun Product.purchase(vc: UIViewController, options: Set<Product.PurchaseOption> = emptySet()) = suspendCancellableTask { cont ->
+suspend fun Product.purchase(vc: UIViewController, options: Set<PurchaseOption> = emptySet()) = suspendCancellableTask { cont ->
     purchase(vc, options.toNSSet(), cont::completionHandler)
 }
 

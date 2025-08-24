@@ -6,7 +6,7 @@ import StoreKit
 
 @available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, visionOS 1.0, *)
 extension Product.PurchaseOption {
-    func toRvm() -> RvmProduct.PurchaseOption { RvmProduct.PurchaseOption(raw: self) }
+    func toRvm() -> RvmPurchaseOption { RvmPurchaseOption(raw: self) }
 }
 
 @available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, visionOS 1.0, *)
